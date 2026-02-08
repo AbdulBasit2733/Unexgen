@@ -1,24 +1,146 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Custom Fonts */
+@layer base {
+  @font-face {
+    font-family: 'Cal Sans';
+    src: url('/fonts/CalSans-SemiBold.woff2') format('woff2');
+    font-weight: 600 900;
+    font-display: swap;
+  }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  @font-face {
+    font-family: 'Geist Mono';
+    src: url('/fonts/GeistMono-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
   }
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
+/* Tailwind v4 Theme Configuration */
+@theme {
+  /* Color Palette - Light Theme */
+  --color-electric-emerald: #10b981;
+  --color-light-bg: #ffffff;
+  --color-light-surface: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-600: #4b5563;
+  --color-gray-900: #111827;
+  --color-cyan: #06b6d4;
+  
+  /* Font Families */
+  --font-cal-sans: 'Cal Sans', system-ui, sans-serif;
+  --font-geist-mono: 'Geist Mono', 'Courier New', monospace;
+  --font-poppins: 'Poppins', system-ui, sans-serif;
+  
+  /* Spacing */
+  --spacing-section: 8rem;
+  
+  /* Border Radius */
+  --radius-card: 3rem;
+  --radius-pill: 9999px;
+}
+
+/* Base Styles */
+@layer base {
+  * {
+    @apply border-gray-200;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-gray-900 antialiased;
+    font-family: var(--font-poppins);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-cal-sans);
+  }
+}
+
+/* Custom Utilities */
+@utility glass-light {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+@utility glass-emerald {
+  background: rgba(16, 185, 129, 0.1);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility text-gradient-emerald {
+  background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom Animations */
+@keyframes pulse-emerald {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@utility animate-pulse-emerald {
+  animation: pulse-emerald 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@utility animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Component Layer */
+@layer components {
+  .btn-primary {
+    @apply bg-electric-emerald text-white font-bold px-8 py-4 rounded-xl 
+           hover:bg-electric-emerald/90 transition-all duration-300 
+           hover:scale-105 hover:shadow-lg hover:shadow-electric-emerald/30;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent text-gray-900 font-bold px-8 py-4 rounded-xl 
+           border-2 border-electric-emerald 
+           hover:bg-electric-emerald hover:text-white 
+           transition-all duration-300;
+  }
+
+  .card-glass {
+    @apply glass-light rounded-[3rem] p-8 
+           hover:border-electric-emerald/30 transition-all duration-500;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-6 py-24;
+  }
 }
