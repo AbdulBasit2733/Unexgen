@@ -25,13 +25,13 @@ export const FinalCTA: React.FC = () => {
           <div className="flex flex-wrap gap-6 justify-center">
             <Button 
               variant="secondary" 
-              className="bg-white text-gray-900 border-white hover:bg-gray-100 text-xl px-12 py-6"
+              className="bg-white text-text-primary border-white hover:bg-bg-tertiary text-xl px-12 py-6"
             >
               Residential Quote
             </Button>
             <Button 
               variant="secondary" 
-              className="bg-transparent text-white border-white hover:bg-white hover:text-gray-900 text-xl px-12 py-6"
+              className="bg-transparent text-white border-white hover:bg-white hover:text-text-primary text-xl px-12 py-6"
             >
               Commercial Partners
             </Button>

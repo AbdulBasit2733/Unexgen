@@ -39,18 +39,18 @@ export const TrustSection: React.FC = () => {
           {/* Floating Badge */}
           <div className="absolute -bottom-8 -right-8 glass-light p-8 rounded-2xl shadow-xl">
             <div className="text-center">
-              <div className="text-5xl font-black text-electric-emerald mb-2">45+</div>
-              <div className="text-gray-600 font-bold">Years Experience</div>
+              <div className="text-5xl font-black text-secondary mb-2">45+</div>
+              <div className="text-text-secondary font-bold">Years Experience</div>
             </div>
           </div>
         </div>
 
         {/* Right - Content */}
         <div>
-          <h2 className="text-5xl font-black mb-6 text-gray-900">
-            Trusted by <span className="text-electric-emerald">500+ Facilities</span>
+          <h2 className="text-5xl font-black mb-6 text-text-primary">
+            Trusted by <span className="text-secondary">500+ Facilities</span>
           </h2>
-          <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+          <p className="text-xl text-text-secondary mb-8 leading-relaxed">
             At Unexgen, we treat your property like our own. Our expert team has decades of combined experience 
             and receives ongoing training to stay ahead of the latest energy technologies.
           </p>
@@ -67,8 +67,8 @@ export const TrustSection: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
-                  <p className="text-gray-600">{item.description}</p>
+                  <h3 className="text-xl font-bold text-text-primary mb-2">{item.title}</h3>
+                  <p className="text-text-secondary">{item.description}</p>
                 </div>
               </div>
             ))}

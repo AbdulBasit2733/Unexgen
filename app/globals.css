@@ -8,45 +8,61 @@
     font-weight: 600 900;
     font-display: swap;
   }
-
-  @font-face {
-    font-family: 'Geist Mono';
-    src: url('/fonts/GeistMono-Regular.woff2') format('woff2');
-    font-weight: 400;
-    font-display: swap;
-  }
 }
 
-/* Tailwind v4 Theme Configuration */
+/* Tailwind v4 Theme Configuration - Enterprise Energy Design System */
 @theme {
-  /* Color Palette - Light Theme */
-  --color-electric-emerald: #10b981;
-  --color-light-bg: #ffffff;
-  --color-light-surface: #f9fafb;
-  --color-gray-100: #f3f4f6;
-  --color-gray-200: #e5e7eb;
-  --color-gray-300: #d1d5db;
-  --color-gray-600: #4b5563;
-  --color-gray-900: #111827;
-  --color-cyan: #06b6d4;
+  /* Color Palette - Brand Colors */
+  --color-primary: #0B1F3A;           /* Deep Navy Blue (Enterprise Primary) */
+  --color-secondary: #22C55E;         /* Vibrant Emerald Green (Energy/Growth) */
+  --color-accent: #2563EB;            /* Electric Blue (Action/Tech) */
+  
+  /* Neutral Colors */
+  --color-bg-primary: #FFFFFF;        /* White */
+  --color-bg-secondary: #F8FAFC;      /* Soft Gray */
+  --color-bg-tertiary: #F1F5F9;       /* Medium Gray */
+  --color-text-primary: #0F172A;      /* Near Black */
+  --color-text-secondary: #475569;    /* Medium Gray */
+  --color-text-tertiary: #94A3B8;     /* Light Gray */
+  
+  /* Semantic Colors */
+  --color-success: #22C55E;           /* Green */
+  --color-warning: #F59E0B;           /* Amber */
+  --color-error: #EF4444;             /* Red */
+  --color-info: #2563EB;              /* Blue */
+  
+  /* Borders & Dividers */
+  --color-border: #E2E8F0;            /* Light Border */
+  --color-border-dark: #CBD5E1;       /* Medium Border */
   
   /* Font Families */
-  --font-cal-sans: 'Cal Sans', system-ui, sans-serif;
-  --font-geist-mono: 'Geist Mono', 'Courier New', monospace;
-  --font-poppins: 'Poppins', system-ui, sans-serif;
+  --font-sans: 'Poppins', system-ui, sans-serif;
+  --font-heading: 'Cal Sans', system-ui, sans-serif;
   
   /* Spacing */
   --spacing-section: 8rem;
   
   /* Border Radius */
-  --radius-card: 3rem;
-  --radius-pill: 9999px;
+  --radius-sm: 0.375rem;              /* 6px */
+  --radius-md: 0.5rem;                /* 8px */
+  --radius-lg: 0.75rem;               /* 12px */
+  --radius-xl: 1rem;                  /* 16px */
+  --radius-2xl: 1.5rem;               /* 24px */
+  --radius-3xl: 2rem;                 /* 32px */
+  --radius-full: 9999px;              /* Pill */
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgba(15, 23, 42, 0.1);
 }
 
 /* Base Styles */
 @layer base {
   * {
-    @apply border-gray-200;
+    @apply border-border;
   }
 
   html {
@@ -54,27 +70,61 @@
   }
 
   body {
-    @apply bg-white text-gray-900 antialiased;
-    font-family: var(--font-poppins);
+    @apply bg-bg-primary text-text-primary antialiased;
+    font-family: var(--font-sans);
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-cal-sans);
+    font-family: var(--font-heading);
+    @apply text-text-primary font-bold;
+  }
+
+  h1 {
+    @apply text-5xl lg:text-6xl tracking-tight;
+  }
+
+  h2 {
+    @apply text-4xl lg:text-5xl tracking-tight;
+  }
+
+  h3 {
+    @apply text-2xl lg:text-3xl tracking-tight;
+  }
+
+  h4 {
+    @apply text-xl lg:text-2xl;
+  }
+
+  h5, h6 {
+    @apply text-lg;
+  }
+
+  p {
+    @apply text-text-secondary leading-relaxed;
+  }
+
+  a {
+    @apply text-accent hover:text-accent/80 transition-colors;
   }
 }
 
-/* Custom Utilities */
-@utility glass-light {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+/* Glassmorphism Utilities */
+@utility glass {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-@utility glass-emerald {
-  background: rgba(16, 185, 129, 0.1);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+@utility glass-dark {
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@utility glass-green {
+  background: rgba(34, 197, 94, 0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(34, 197, 94, 0.2);
 }
 
 @utility no-scrollbar {
@@ -86,15 +136,15 @@
   }
 }
 
-@utility text-gradient-emerald {
-  background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+@utility text-gradient-brand {
+  background: linear-gradient(135deg, #0B1F3A 0%, #22C55E 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Custom Animations */
-@keyframes pulse-emerald {
+/* Animation Keyframes */
+@keyframes pulse {
   0%, 100% {
     opacity: 1;
   }
@@ -108,39 +158,105 @@
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-12px);
   }
 }
 
-@utility animate-pulse-emerald {
-  animation: pulse-emerald 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(34, 197, 94, 0.8);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@utility animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 @utility animate-float {
   animation: float 3s ease-in-out infinite;
 }
 
+@utility animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+@utility animate-shimmer {
+  animation: shimmer 2s infinite;
+  background-size: 1000px 100%;
+}
+
 /* Component Layer */
 @layer components {
   .btn-primary {
-    @apply bg-electric-emerald text-white font-bold px-8 py-4 rounded-xl 
-           hover:bg-electric-emerald/90 transition-all duration-300 
-           hover:scale-105 hover:shadow-lg hover:shadow-electric-emerald/30;
+    @apply bg-secondary text-white font-bold px-8 py-3 rounded-lg
+           hover:bg-secondary/90 active:scale-95
+           transition-all duration-300 
+           shadow-md hover:shadow-lg
+           disabled:opacity-50 disabled:cursor-not-allowed
+           inline-flex items-center justify-center gap-2;
   }
 
   .btn-secondary {
-    @apply bg-transparent text-gray-900 font-bold px-8 py-4 rounded-xl 
-           border-2 border-electric-emerald 
-           hover:bg-electric-emerald hover:text-white 
+    @apply bg-bg-secondary text-text-primary font-bold px-8 py-3 rounded-lg
+           border border-border-dark
+           hover:bg-bg-tertiary active:scale-95
+           transition-all duration-300
+           disabled:opacity-50 disabled:cursor-not-allowed
+           inline-flex items-center justify-center gap-2;
+  }
+
+  .btn-tertiary {
+    @apply bg-transparent text-secondary font-bold px-8 py-3 rounded-lg
+           border-2 border-secondary
+           hover:bg-secondary hover:text-white active:scale-95
+           transition-all duration-300
+           disabled:opacity-50 disabled:cursor-not-allowed
+           inline-flex items-center justify-center gap-2;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl p-6 shadow-md
+           border border-border
            transition-all duration-300;
   }
 
   .card-glass {
-    @apply glass-light rounded-[3rem] p-8 
-           hover:border-electric-emerald/30 transition-all duration-500;
+    @apply glass rounded-2xl p-6
+           hover:shadow-lg transition-all duration-300;
+  }
+
+  .card-elevated {
+    @apply bg-white rounded-2xl p-6 shadow-lg
+           border border-border/50
+           hover:shadow-xl transition-all duration-300;
   }
 
   .section-container {
-    @apply max-w-7xl mx-auto px-6 py-24;
+    @apply max-w-7xl mx-auto px-6;
+  }
+
+  .section-padding {
+    @apply py-20 lg:py-32;
+  }
+
+  .input-base {
+    @apply w-full px-4 py-3 rounded-lg
+           border border-border
+           bg-white text-text-primary
+           placeholder:text-text-tertiary
+           focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent
+           transition-all duration-200;
   }
 }

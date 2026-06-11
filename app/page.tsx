@@ -8,6 +8,9 @@ import { ServicesGrid } from "@/components/sections/services-grid";
 import { Testimonials } from "@/components/sections/testimonials";
 import { TrustBar } from "@/components/sections/trust-bar";
 import { TrustSection } from "@/components/sections/trust-section";
+import { ROICalculator } from "@/components/sections/roi-calculator";
+import { WhyUnexgen } from "@/components/sections/why-unexgen";
+import { EnvironmentalImpact } from "@/components/sections/environmental-impact";
 import { EfficiencyCompareCard } from "@/components/ui/efficiency-compare-card";
 
 export default function Home() {
@@ -19,14 +22,18 @@ export default function Home() {
         <TrustBar />
         <ServicesGrid />
         <ProcessSection />
+        <WhyUnexgen />
+        <ROICalculator />
+        <EnvironmentalImpact />
+        
         {/* Efficiency Compare Section */}
-        <section className="section-container">
+        <section className="section-container section-padding bg-bg-secondary">
           <div className="mb-12 text-center">
-            <h2 className="text-5xl font-black mb-4">
+            <h2 className="text-5xl lg:text-6xl font-bold mb-4 text-text-primary">
               Thermal{" "}
-              <span className="text-electric-emerald">Optimization</span>
+              <span className="text-gradient-brand">Optimization</span>
             </h2>
-            <p className="text-slate-500 text-lg">
+            <p className="text-text-secondary text-lg">
               AI-powered thermal imaging reveals energy waste
             </p>
           </div>

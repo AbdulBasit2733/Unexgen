@@ -1,100 +1,270 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { LightningIcon } from '@/components/icons/Icons';
 import { FloatingEnergyMonitor } from '@/components/ui/FloatingEnergyMonitor';
 import Image from 'next/image';
+import { fadeInUp, fadeInDown, staggerContainer, staggerItem, float } from '@/lib/animations';
 
 export const HeroSection: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const heroBgRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Create dynamic background glow effect on mouse move
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!heroBgRef.current) return;
+      const rect = heroBgRef.current.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      heroBgRef.current.style.background = `
+        radial-gradient(
+          circle 800px at ${x}px ${y}px,
+          rgba(34, 197, 94, 0.08),
+          rgba(255, 255, 255, 0)
+        ),
+        linear-gradient(135deg, #ffffff 0%, #F8FAFC 100%)
+      `;
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   return (
-    <section className="relative min-h-[95vh] flex items-center justify-center overflow-hidden">
-      {/* Hero Background Image */}
-      <div className="absolute inset-0">
-        <Image
-          src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1920&q=80"
-          alt="Solar panels and renewable energy"
-          fill
-          className="object-cover opacity-30"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/80" />
+    <section
+      ref={containerRef}
+      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden"
+    >
+      {/* Animated Background */}
+      <div
+        ref={heroBgRef}
+        className="absolute inset-0 transition-all duration-300"
+        style={{
+          background: 'linear-gradient(135deg, #ffffff 0%, #F8FAFC 100%)',
+        }}
+      />
+
+      {/* Animated Grid Background */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'linear-gradient(0deg, transparent 24%, rgba(34, 197, 94, .1) 25%, rgba(34, 197, 94, .1) 26%, transparent 27%, transparent 74%, rgba(34, 197, 94, .1) 75%, rgba(34, 197, 94, .1) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(34, 197, 94, .1) 25%, rgba(34, 197, 94, .1) 26%, transparent 27%, transparent 74%, rgba(34, 197, 94, .1) 75%, rgba(34, 197, 94, .1) 76%, transparent 77%, transparent)',
+          backgroundSize: '50px 50px',
+        }} />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      {/* Animated Gradient Orbs */}
+      <motion.div
+        className="absolute top-20 right-10 w-96 h-96 bg-gradient-to-br from-secondary/20 to-accent/10 rounded-full blur-3xl"
+        animate={{
+          y: [0, 40, 0],
+          x: [0, 20, 0],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          repeatType: 'loop',
+        }}
+      />
+      <motion.div
+        className="absolute -bottom-32 -left-32 w-80 h-80 bg-gradient-to-tr from-accent/15 to-secondary/20 rounded-full blur-3xl"
+        animate={{
+          y: [0, -40, 0],
+          x: [0, -20, 0],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          repeatType: 'loop',
+        }}
+      />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 lg:py-32">
+        <motion.div
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
+          variants={staggerContainer}
+          initial="hidden"
+          animate="visible"
+        >
           {/* Left Content */}
-          <div>
+          <motion.div variants={staggerItem}>
             {/* Urgency Badge */}
-            <div className="flex items-center gap-3 glass-emerald px-6 py-3 rounded-full inline-flex mb-8 animate-float">
-              <div className="w-2 h-2 bg-electric-emerald rounded-full animate-pulse-emerald" />
-              <span className="text-sm font-medium text-gray-900">
+            <motion.div
+              className="flex items-center gap-3 glass rounded-full inline-flex mb-8 px-6 py-3 border border-border"
+              variants={fadeInDown}
+              animate="visible"
+            >
+              <motion.div
+                className="w-2 h-2 bg-secondary rounded-full"
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+              <span className="text-sm font-semibold text-text-primary">
                 Federal Incentives Ending Soon
               </span>
-            </div>
+            </motion.div>
 
             {/* Hero Headline */}
-            <h1 className="text-6xl md:text-7xl font-black leading-none mb-6 text-gray-900">
+            <motion.h1
+              className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight mb-6 text-text-primary"
+              variants={fadeInUp}
+            >
               Power Your Future with{' '}
-              <span className="text-gradient-emerald">Sustainable</span>
+              <span className="text-gradient-brand">Sustainable</span>
               {' '}Energy
-            </h1>
+            </motion.h1>
 
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-600 mb-8">
-              <span className="text-electric-emerald">Hydrogen</span> • Solar •{' '}
-              <span className="text-electric-emerald">Autonomous</span> HVAC
-            </h2>
+            {/* Subheadline */}
+            <motion.h2
+              className="text-xl sm:text-2xl lg:text-3xl font-semibold text-text-secondary mb-8"
+              variants={fadeInUp}
+            >
+              <span className="text-secondary">Green Hydrogen</span> • Solar •{' '}
+              <span className="text-secondary">Smart HVAC</span>
+            </motion.h2>
 
-            {/* Subtext */}
-            <p className="text-xl text-gray-600 mb-12 leading-relaxed">
-              Industrial-grade decarbonization infrastructure. Net-zero operations. 
-              Powered by AI-driven microgrids and green hydrogen technology.
-            </p>
+            {/* Description */}
+            <motion.p
+              className="text-lg text-text-secondary mb-12 leading-relaxed max-w-md"
+              variants={fadeInUp}
+            >
+              Industrial-grade decarbonization infrastructure powered by AI-driven microgrids, 
+              net-zero operations, and next-generation green hydrogen technology.
+            </motion.p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-6">
-              <Button variant="primary" icon={<LightningIcon />} className="text-xl px-10 py-6">
+            <motion.div
+              className="flex flex-wrap gap-6 mb-12"
+              variants={fadeInUp}
+            >
+              <Button
+                variant="primary"
+                icon={<LightningIcon />}
+                className="text-lg px-10 py-4"
+              >
                 Start Energy Audit
               </Button>
-              <Button variant="secondary" className="text-xl px-10 py-6">
+              <Button
+                variant="secondary"
+                className="text-lg px-10 py-4"
+              >
                 View Case Studies
               </Button>
-            </div>
+            </motion.div>
 
-            {/* Floating Monitor */}
-            <div className="mt-12">
-              <FloatingEnergyMonitor status="OPTIMIZED" />
-            </div>
-          </div>
+            {/* Trust Badges */}
+            <motion.div
+              className="flex flex-wrap gap-6 pt-8 border-t border-border"
+              variants={fadeInUp}
+            >
+              <div>
+                <div className="text-2xl font-bold text-secondary">500+</div>
+                <div className="text-sm text-text-tertiary">Enterprise Clients</div>
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-secondary">99.7%</div>
+                <div className="text-sm text-text-tertiary">System Uptime</div>
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-secondary">$2.4M</div>
+                <div className="text-sm text-text-tertiary">Avg Annual Savings</div>
+              </div>
+            </motion.div>
+          </motion.div>
 
-          {/* Right - Hero Image */}
-          <div className="relative">
-            <div className="relative h-[600px] rounded-3xl overflow-hidden shadow-2xl">
+          {/* Right - Hero Visualization */}
+          <motion.div
+            className="relative h-full min-h-[500px] lg:min-h-[600px]"
+            variants={fadeInUp}
+          >
+            {/* Main Image Container */}
+            <motion.div
+              className="relative h-full rounded-3xl overflow-hidden shadow-2xl border border-border/20"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
               <Image
                 src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&q=80"
-                alt="Modern solar panel installation"
+                alt="Modern sustainable energy installation"
                 fill
                 className="object-cover"
                 priority
               />
-              {/* Overlay Stats Card */}
-              <div className="absolute bottom-8 left-8 right-8 glass-light p-6 rounded-2xl">
+
+              {/* Overlay Gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-transparent" />
+
+              {/* Stats Overlay Card */}
+              <motion.div
+                className="absolute bottom-8 left-8 right-8 glass rounded-2xl p-6 border border-white/20 backdrop-blur-md"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+              >
                 <div className="grid grid-cols-3 gap-4 text-center">
-                  <div>
-                    <div className="text-3xl font-black text-electric-emerald">500+</div>
-                    <div className="text-sm text-gray-600">Installations</div>
-                  </div>
-                  <div>
-                    <div className="text-3xl font-black text-electric-emerald">99.7%</div>
-                    <div className="text-sm text-gray-600">Uptime</div>
-                  </div>
-                  <div>
-                    <div className="text-3xl font-black text-electric-emerald">$2.4M</div>
-                    <div className="text-sm text-gray-600">Avg Savings</div>
-                  </div>
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.6 }}
+                  >
+                    <div className="text-3xl font-bold text-secondary">500+</div>
+                    <div className="text-xs text-text-secondary">Installations</div>
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.7 }}
+                  >
+                    <div className="text-3xl font-bold text-secondary">99.7%</div>
+                    <div className="text-xs text-text-secondary">Uptime</div>
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.8 }}
+                  >
+                    <div className="text-3xl font-bold text-secondary">$2.4M</div>
+                    <div className="text-xs text-text-secondary">Avg Savings</div>
+                  </motion.div>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+
+              {/* Floating Energy Monitor */}
+              <motion.div
+                className="absolute -top-8 -right-8 z-20"
+                animate={{
+                  y: [0, -20, 0],
+                  rotate: [0, 5, -5, 0],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  repeatType: 'loop',
+                }}
+              >
+                <FloatingEnergyMonitor status="OPTIMIZED" />
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          <div className="w-6 h-10 border-2 border-secondary rounded-full flex items-center justify-center">
+            <motion.div
+              className="w-1 h-2 bg-secondary rounded-full"
+              animate={{ y: [0, 6, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            />
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

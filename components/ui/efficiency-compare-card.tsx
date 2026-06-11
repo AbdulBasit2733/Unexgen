@@ -13,7 +13,7 @@ export const EfficiencyCompareCard: React.FC = () => {
         </div>
         
         {/* After - Optimized */}
-        <div className="relative bg-gradient-to-br from-blue-500 to-electric-emerald flex items-center justify-center">
+        <div className="relative bg-gradient-to-br from-blue-500 to-secondary flex items-center justify-center">
           <div className="text-center">
             <div className="text-white text-xl font-bold mb-2">After</div>
             <div className="text-white/80 text-sm">Optimized</div>

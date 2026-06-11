@@ -1,4 +1,7 @@
+'use client';
+
 import React from 'react';
+import { motion } from 'framer-motion';
 import { caseStudies } from '@/lib/utils';
 import Image from 'next/image';
 
@@ -19,77 +22,138 @@ const portfolioImages: { [key: string]: { before: string; after: string } } = {
 };
 
 export const PortfolioShowcase: React.FC = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.5 },
+    },
+  };
+
   return (
-    <section id="portfolio" className="py-24 overflow-hidden bg-white">
-      <div className="max-w-7xl mx-auto px-6 mb-12">
-        <h2 className="text-5xl font-black mb-4 text-gray-900">
-          Proven <span className="text-electric-emerald">Transformations</span>
+    <section id="portfolio" className="section-padding overflow-hidden bg-bg-secondary">
+      <motion.div
+        className="max-w-7xl mx-auto px-6 mb-12"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+      >
+        <h2 className="text-5xl lg:text-6xl font-bold mb-4 text-text-primary">
+          Proven <span className="text-gradient-brand">Transformations</span>
         </h2>
-        <p className="text-gray-600 text-xl">
+        <p className="text-text-secondary text-xl">
           Real installations. Measurable impact. Verified carbon reduction.
         </p>
-      </div>
+      </motion.div>
 
       {/* Horizontal Scroll Container */}
-      <div className="flex gap-8 overflow-x-auto no-scrollbar px-6 pb-6">
+      <motion.div
+        className="flex gap-8 overflow-x-auto no-scrollbar px-6 pb-6"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         {caseStudies.map((study) => (
-          <div 
+          <motion.div
             key={study.id}
-            className="flex-shrink-0 w-[550px] bg-white rounded-3xl shadow-xl overflow-hidden group hover:shadow-2xl transition-shadow duration-500"
+            variants={itemVariants}
+            className="flex-shrink-0 w-[550px] bg-white rounded-3xl shadow-lg overflow-hidden group hover:shadow-2xl transition-shadow duration-500 border border-border"
           >
             {/* Before/After Split Images */}
-            <div className="relative h-80 grid grid-cols-2 gap-1">
+            <div className="relative h-80 grid grid-cols-2 gap-0.5">
               {/* Before */}
-              <div className="relative overflow-hidden">
+              <motion.div
+                className="relative overflow-hidden"
+                whileHover={{ scale: 1.05 }}
+              >
                 <Image
-                  src={portfolioImages[study.id]?.before || 'https://via.placeholder.com/300x400/6b7280/ffffff?text=Before'}
+                  src={
+                    portfolioImages[study.id]?.before ||
+                    'https://via.placeholder.com/300x400/6b7280/ffffff?text=Before'
+                  }
                   alt={`${study.title} - Before`}
                   fill
                   className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                 />
-                <div className="absolute top-4 left-4 bg-gray-900/80 px-3 py-1 rounded text-xs text-white font-bold">
+                <div className="absolute top-4 left-4 bg-primary/80 px-3 py-1 rounded text-xs text-white font-bold">
                   BEFORE
                 </div>
-              </div>
-              
+              </motion.div>
+
               {/* After */}
-              <div className="relative overflow-hidden">
+              <motion.div
+                className="relative overflow-hidden"
+                whileHover={{ scale: 1.05 }}
+              >
                 <Image
-                  src={portfolioImages[study.id]?.after || 'https://via.placeholder.com/300x400/10b981/ffffff?text=After'}
+                  src={
+                    portfolioImages[study.id]?.after ||
+                    'https://via.placeholder.com/300x400/22C55E/ffffff?text=After'
+                  }
                   alt={`${study.title} - After`}
                   fill
                   className="object-cover"
                 />
-                <div className="absolute top-4 right-4 bg-electric-emerald px-3 py-1 rounded text-xs text-white font-bold">
+                <div className="absolute top-4 right-4 bg-secondary px-3 py-1 rounded text-xs text-white font-bold">
                   AFTER
                 </div>
-              </div>
+              </motion.div>
             </div>
 
             {/* Content */}
             <div className="p-8">
               {/* Carbon Offset Badge */}
-              <div className="glass-emerald px-4 py-2 rounded-xl inline-flex items-center gap-2 mb-4">
-                <div className="w-2 h-2 bg-electric-emerald rounded-full" />
-                <span className="text-sm font-bold text-gray-900">Carbon Offset: {study.carbonOffset}</span>
-              </div>
+              <motion.div
+                className="glass rounded-xl px-4 py-2 inline-flex items-center gap-2 mb-4 border border-secondary/20"
+                initial={{ opacity: 0, y: -10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+              >
+                <motion.div
+                  className="w-2 h-2 bg-secondary rounded-full"
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+                <span className="text-sm font-bold text-text-primary">
+                  Carbon Offset: {study.carbonOffset}
+                </span>
+              </motion.div>
 
-              <h3 className="text-2xl font-black mb-2 text-gray-900">{study.title}</h3>
-              <p className="text-gray-600 mb-6">{study.location}</p>
+              <h3 className="text-2xl font-bold mb-2 text-text-primary">
+                {study.title}
+              </h3>
+              <p className="text-text-secondary mb-6">{study.location}</p>
 
-              <div className="flex items-center justify-between pt-6 border-t border-gray-200">
+              <div className="flex items-center justify-between pt-6 border-t border-border">
                 <div>
-                  <div className="text-sm text-gray-600 mb-1">Annual Savings</div>
-                  <div className="text-2xl font-black text-electric-emerald">{study.annualKwhSaved}</div>
+                  <div className="text-sm text-text-secondary mb-1">Annual Savings</div>
+                  <div className="text-2xl font-bold text-secondary">
+                    {study.annualKwhSaved}
+                  </div>
                 </div>
-                <button className="px-6 py-3 bg-gray-100 hover:bg-electric-emerald hover:text-white rounded-xl font-bold transition-colors">
+                <motion.button
+                  className="px-6 py-3 bg-secondary hover:bg-secondary/90 text-white rounded-xl font-bold transition-colors"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
                   View Details
-                </button>
+                </motion.button>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };
