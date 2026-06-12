@@ -3,43 +3,75 @@
 /* Custom Fonts */
 @layer base {
   @font-face {
-    font-family: 'Cal Sans';
-    src: url('/fonts/CalSans-SemiBold.woff2') format('woff2');
-    font-weight: 600 900;
+    font-family: 'Space Grotesk';
+    src: url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&display=swap');
+    font-weight: 600 700;
     font-display: swap;
   }
 
   @font-face {
-    font-family: 'Geist Mono';
-    src: url('/fonts/GeistMono-Regular.woff2') format('woff2');
-    font-weight: 400;
+    font-family: 'Plus Jakarta Sans';
+    src: url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
+    font-weight: 600 700 800;
     font-display: swap;
   }
 }
 
 /* Tailwind v4 Theme Configuration */
 @theme {
-  /* Color Palette - Light Theme */
-  --color-electric-emerald: #10b981;
-  --color-light-bg: #ffffff;
-  --color-light-surface: #f9fafb;
+  /* Primary Color - Deep Industrial Navy (60%) */
+  --color-navy-950: #081C3A;
+  --color-navy-900: #0D2347;
+  --color-navy-800: #10284F;
+  --color-navy-700: #1a3a68;
+  --color-navy-600: #2a5090;
+  
+  /* Secondary Color - Renewable Green (30%) */
+  --color-green-600: #2FA84F;
+  --color-green-500: #3AB85B;
+  --color-green-400: #4CCB68;
+  
+  /* Accent Color - Energy Blue (10%) */
+  --color-blue-600: #1E90FF;
+  --color-blue-500: #29A8FF;
+  
+  /* Neutrals */
+  --color-white: #ffffff;
+  --color-gray-50: #f9fafb;
   --color-gray-100: #f3f4f6;
   --color-gray-200: #e5e7eb;
   --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
   --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
   --color-gray-900: #111827;
-  --color-cyan: #06b6d4;
+  
+  /* Dark Theme Colors */
+  --color-dark-bg: #0a1128;
+  --color-dark-surface: #0f1829;
+  --color-dark-border: #1e3a5f;
   
   /* Font Families */
-  --font-cal-sans: 'Cal Sans', system-ui, sans-serif;
-  --font-geist-mono: 'Geist Mono', 'Courier New', monospace;
-  --font-poppins: 'Poppins', system-ui, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-alt-heading: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  
+  /* Font Weights */
+  --font-weight-400: 400;
+  --font-weight-500: 500;
+  --font-weight-600: 600;
+  --font-weight-700: 700;
+  --font-weight-800: 800;
   
   /* Spacing */
   --spacing-section: 8rem;
   
   /* Border Radius */
-  --radius-card: 3rem;
+  --radius-card: 1.5rem;
+  --radius-lg: 2rem;
+  --radius-xl: 3rem;
   --radius-pill: 9999px;
 }
 
@@ -51,15 +83,27 @@
 
   html {
     scroll-behavior: smooth;
+    @apply bg-white;
   }
 
   body {
     @apply bg-white text-gray-900 antialiased;
-    font-family: var(--font-poppins);
+    font-family: var(--font-body);
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-cal-sans);
+  h1 {
+    font-family: var(--font-heading);
+    @apply font-800 text-gray-900;
+  }
+
+  h2 {
+    font-family: var(--font-heading);
+    @apply font-700 text-gray-900;
+  }
+
+  h3, h4, h5, h6 {
+    font-family: var(--font-alt-heading);
+    @apply font-600 text-gray-900;
   }
 }
 
@@ -71,10 +115,23 @@
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-@utility glass-emerald {
-  background: rgba(16, 185, 129, 0.1);
+@utility glass-dark {
+  background: rgba(8, 28, 58, 0.8);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px -1px rgba(0, 0, 0, 0.3);
+}
+
+@utility glass-green {
+  background: rgba(47, 168, 79, 0.1);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(47, 168, 79, 0.3);
+}
+
+@utility glass-blue {
+  background: rgba(30, 144, 255, 0.1);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(30, 144, 255, 0.3);
 }
 
 @utility no-scrollbar {
@@ -86,8 +143,15 @@
   }
 }
 
-@utility text-gradient-emerald {
-  background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+@utility text-gradient-navy-green {
+  background: linear-gradient(135deg, #081C3A 0%, #2FA84F 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@utility text-gradient-green-blue {
+  background: linear-gradient(135deg, #2FA84F 0%, #1E90FF 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -112,7 +176,7 @@
   }
 }
 
-@utility animate-pulse-emerald {
+@utility animate-pulse-green {
   animation: pulse-emerald 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
@@ -120,27 +184,75 @@
   animation: float 3s ease-in-out infinite;
 }
 
+/* Additional Animations */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(47, 168, 79, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(47, 168, 79, 0.6);
+  }
+}
+
+@utility animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+@keyframes energy-flow {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+}
+
+@utility animate-energy-flow {
+  animation: energy-flow 2s ease-out infinite;
+}
+
+/* Font Weight Utilities */
+@utility font-800 {
+  font-weight: 800;
+}
+
 /* Component Layer */
 @layer components {
   .btn-primary {
-    @apply bg-electric-emerald text-white font-bold px-8 py-4 rounded-xl 
-           hover:bg-electric-emerald/90 transition-all duration-300 
-           hover:scale-105 hover:shadow-lg hover:shadow-electric-emerald/30;
+    @apply bg-green-500 text-white font-bold px-8 py-4 rounded-lg 
+           hover:bg-green-600 transition-all duration-300 
+           hover:scale-105 hover:shadow-lg hover:shadow-green-500/30;
   }
 
   .btn-secondary {
-    @apply bg-transparent text-gray-900 font-bold px-8 py-4 rounded-xl 
-           border-2 border-electric-emerald 
-           hover:bg-electric-emerald hover:text-white 
+    @apply bg-transparent text-gray-900 font-bold px-8 py-4 rounded-lg 
+           border-2 border-navy-800 
+           hover:bg-navy-800 hover:text-white 
            transition-all duration-300;
   }
 
+  .btn-accent {
+    @apply bg-blue-500 text-white font-bold px-8 py-4 rounded-lg 
+           hover:bg-blue-600 transition-all duration-300 
+           hover:shadow-lg hover:shadow-blue-500/30;
+  }
+
   .card-glass {
-    @apply glass-light rounded-[3rem] p-8 
-           hover:border-electric-emerald/30 transition-all duration-500;
+    @apply glass-light rounded-xl p-8 
+           hover:border-green-500/30 transition-all duration-500;
   }
 
   .section-container {
     @apply max-w-7xl mx-auto px-6 py-24;
+  }
+
+  .section-title {
+    @apply text-5xl md:text-6xl font-800 text-navy-950 mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-xl text-gray-600 max-w-3xl mx-auto mb-16;
   }
 }

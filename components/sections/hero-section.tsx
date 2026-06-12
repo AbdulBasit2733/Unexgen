@@ -1,94 +1,125 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { LightningIcon } from '@/components/icons/Icons';
-import { FloatingEnergyMonitor } from '@/components/ui/FloatingEnergyMonitor';
 import Image from 'next/image';
+import { Zap, Wind, Droplets } from 'lucide-react';
 
 export const HeroSection: React.FC = () => {
   return (
-    <section className="relative min-h-[95vh] flex items-center justify-center overflow-hidden">
-      {/* Hero Background Image */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      {/* Background with Grid Overlay */}
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1920&q=80"
-          alt="Solar panels and renewable energy"
+          src="https://images.unsplash.com/photo-1560707303-4e980ce876ad?w=1920&q=80"
+          alt="Solar farm and renewable energy infrastructure"
           fill
-          className="object-cover opacity-30"
+          className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/80" />
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/70" />
+        
+        {/* Grid Pattern Overlay */}
+        <div className="absolute inset-0 opacity-10" style={{
+          backgroundImage: 'linear-gradient(rgba(13, 35, 71, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(13, 35, 71, 0.1) 1px, transparent 1px)',
+          backgroundSize: '50px 50px'
+        }} />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-32">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-16 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div>
-            {/* Urgency Badge */}
-            <div className="flex items-center gap-3 glass-emerald px-6 py-3 rounded-full inline-flex mb-8 animate-float">
-              <div className="w-2 h-2 bg-electric-emerald rounded-full animate-pulse-emerald" />
-              <span className="text-sm font-medium text-gray-900">
-                Federal Incentives Ending Soon
+            {/* Badge */}
+            <div className="flex items-center gap-3 glass-green px-4 py-2 rounded-full inline-flex mb-8">
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse-green" />
+              <span className="text-sm font-600 text-gray-900 uppercase tracking-wide">
+                Government Subsidy Available
               </span>
             </div>
 
-            {/* Hero Headline */}
-            <h1 className="text-6xl md:text-7xl font-black leading-none mb-6 text-gray-900">
-              Power Your Future with{' '}
-              <span className="text-gradient-emerald">Sustainable</span>
-              {' '}Energy
+            {/* Main Headline */}
+            <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6 text-navy-950">
+              Powering Sustainable{' '}
+              <span className="text-gradient-green-blue">Cooling</span>{' '}Infrastructure
             </h1>
 
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-600 mb-8">
-              <span className="text-electric-emerald">Hydrogen</span> • Solar •{' '}
-              <span className="text-electric-emerald">Autonomous</span> HVAC
+            {/* Subheading */}
+            <h2 className="text-xl md:text-2xl font-600 text-gray-700 mb-8">
+              Engineering India&apos;s Future Through Smart Cooling, Renewable Energy & Thermal Storage Solutions
             </h2>
 
-            {/* Subtext */}
-            <p className="text-xl text-gray-600 mb-12 leading-relaxed">
-              Industrial-grade decarbonization infrastructure. Net-zero operations. 
-              Powered by AI-driven microgrids and green hydrogen technology.
+            {/* Description */}
+            <p className="text-lg text-gray-600 mb-8 leading-relaxed max-w-lg">
+              Complete end-to-end engineering solutions for Green Cold Storage, HVAC Systems, Thermal Energy Storage, and Solar EPC projects. Trusted by agriculture, food processing, industrial, and commercial sectors.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-6">
-              <Button variant="primary" icon={<LightningIcon />} className="text-xl px-10 py-6">
-                Start Energy Audit
+            <div className="flex flex-col sm:flex-row gap-4 mb-12">
+              <Button variant="primary" className="text-base px-8 py-3 font-bold">
+                Explore Solutions
               </Button>
-              <Button variant="secondary" className="text-xl px-10 py-6">
-                View Case Studies
+              <Button variant="secondary" className="text-base px-8 py-3 font-bold">
+                Request Consultation
               </Button>
             </div>
 
-            {/* Floating Monitor */}
-            <div className="mt-12">
-              <FloatingEnergyMonitor status="OPTIMIZED" />
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-gray-200">
+              <div>
+                <div className="text-3xl font-bold text-green-500">500+</div>
+                <div className="text-sm text-gray-600 font-500">Projects Completed</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-blue-500">25 MT</div>
+                <div className="text-sm text-gray-600 font-500">Avg CO₂ Reduction</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-navy-950">15 Yrs</div>
+                <div className="text-sm text-gray-600 font-500">Industry Experience</div>
+              </div>
             </div>
           </div>
 
-          {/* Right - Hero Image */}
-          <div className="relative">
-            <div className="relative h-[600px] rounded-3xl overflow-hidden shadow-2xl">
+          {/* Right - Hero Image Card */}
+          <div className="relative hidden lg:block">
+            <div className="relative h-[600px] rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
               <Image
-                src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&q=80"
-                alt="Modern solar panel installation"
+                src="https://images.unsplash.com/photo-1497440646356-267b8c5fbffe?w=800&q=80"
+                alt="Green Cold Storage facility with solar panels"
                 fill
                 className="object-cover"
                 priority
               />
-              {/* Overlay Stats Card */}
-              <div className="absolute bottom-8 left-8 right-8 glass-light p-6 rounded-2xl">
-                <div className="grid grid-cols-3 gap-4 text-center">
-                  <div>
-                    <div className="text-3xl font-black text-electric-emerald">500+</div>
-                    <div className="text-sm text-gray-600">Installations</div>
+              
+              {/* Feature Cards Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-950/60 via-transparent to-transparent" />
+              
+              {/* Benefits Cards */}
+              <div className="absolute bottom-6 left-6 right-6 space-y-3">
+                <div className="glass-light p-4 rounded-lg flex items-center gap-3">
+                  <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Zap className="w-4 h-4 text-white" />
                   </div>
                   <div>
-                    <div className="text-3xl font-black text-electric-emerald">99.7%</div>
-                    <div className="text-sm text-gray-600">Uptime</div>
+                    <div className="text-sm font-700 text-gray-900">80-90% Energy Reduction</div>
+                  </div>
+                </div>
+
+                <div className="glass-light p-4 rounded-lg flex items-center gap-3">
+                  <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Droplets className="w-4 h-4 text-white" />
                   </div>
                   <div>
-                    <div className="text-3xl font-black text-electric-emerald">$2.4M</div>
-                    <div className="text-sm text-gray-600">Avg Savings</div>
+                    <div className="text-sm font-700 text-gray-900">Complete Engineering Solution</div>
+                  </div>
+                </div>
+
+                <div className="glass-light p-4 rounded-lg flex items-center gap-3">
+                  <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Wind className="w-4 h-4 text-white" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-700 text-gray-900">Design to Commissioning</div>
                   </div>
                 </div>
               </div>
