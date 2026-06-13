@@ -16,13 +16,13 @@ const serviceImages: { [key: string]: string } = {
 
 export const ServicesGrid: React.FC = () => {
   return (
-    <section id="solutions" className="section-container bg-white">
+    <section id="solutions" className="section-container">
       <div className="text-center mb-16">
-        <h2 className="text-5xl font-black mb-6 text-gray-900">
-          Next-Gen <span className="text-electric-emerald">Energy Solutions</span>
+        <h2 className="text-5xl font-black mb-6 text-balance text-foreground">
+          Next-Gen <span className="text-gradient-emerald">Energy Solutions</span>
         </h2>
-        <p className="text-gray-600 text-xl max-w-3xl mx-auto">
-          Enterprise-grade energy solutions backed by AI monitoring and federal tax incentives.
+        <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
+          Enterprise-grade energy solutions backed by AI monitoring and government incentives across India.
         </p>
       </div>
 
@@ -38,30 +38,30 @@ export const ServicesGrid: React.FC = () => {
             />
           </div>
 
-          <h3 className="text-3xl font-black mb-4 text-gray-900">
-            Why Choose <span className="text-electric-emerald">Unexgen</span>
+          <h3 className="text-3xl font-black mb-4 text-foreground">
+            Why Choose <span className="text-primary">Unexgen</span>
           </h3>
 
           {/* Comparison Table */}
-          <details className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
-            <summary className="px-6 py-4 cursor-pointer font-bold text-lg text-gray-900 hover:text-electric-emerald transition-colors">
-              Traditional vs Unexgen Microgrid
+          <details className="bg-card border border-border rounded-2xl overflow-hidden shadow-sm">
+            <summary className="px-6 py-4 cursor-pointer font-bold text-lg text-foreground hover:text-primary transition-colors">
+              Traditional vs Unexgen Systems
             </summary>
             <div className="px-6 pb-6">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b border-gray-200">
-                    <th className="text-left py-2 text-gray-600">Feature</th>
-                    <th className="text-left py-2 text-gray-600">Traditional</th>
-                    <th className="text-left py-2 text-electric-emerald">Unexgen</th>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-muted-foreground">Feature</th>
+                    <th className="text-left py-2 text-muted-foreground">Traditional</th>
+                    <th className="text-left py-2 text-primary">Unexgen</th>
                   </tr>
                 </thead>
                 <tbody>
                   {comparisonData.map((row, idx) => (
-                    <tr key={idx} className="border-b border-gray-100">
-                      <td className="py-3 text-gray-900">{row.feature}</td>
-                      <td className="py-3 text-gray-600">{row.traditional}</td>
-                      <td className="py-3 text-electric-emerald font-bold">{row.unexgen}</td>
+                    <tr key={idx} className="border-b border-border/50">
+                      <td className="py-3 text-foreground">{row.feature}</td>
+                      <td className="py-3 text-muted-foreground">{row.traditional}</td>
+                      <td className="py-3 text-primary font-bold">{row.unexgen}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -87,24 +87,26 @@ export const ServicesGrid: React.FC = () => {
 
                 {/* Content Column */}
                 <div className="md:col-span-3 p-8">
-                  <h3 className="text-3xl font-black mb-3">{service.title}</h3>
-                  <p className={`text-lg mb-4 ${service.isFeatured ? 'text-white/90' : 'text-gray-600'}`}>
+                  <h3 className={`text-3xl font-black mb-3 ${service.isFeatured ? 'text-primary-foreground' : 'text-foreground'}`}>
+                    {service.title}
+                  </h3>
+                  <p className={`text-lg mb-4 ${service.isFeatured ? 'text-primary-foreground/90' : 'text-muted-foreground'}`}>
                     {service.description}
                   </p>
 
-                  <div className={`text-2xl font-bold mb-6 ${service.isFeatured ? 'text-white' : 'text-electric-emerald'}`}>
+                  <div className={`text-2xl font-bold mb-6 ${service.isFeatured ? 'text-primary-foreground' : 'text-primary'}`}>
                     {service.lifetimeSavings}
                   </div>
 
-                  <details className={service.isFeatured ? 'bg-white/10 rounded-xl' : 'bg-gray-50 rounded-xl'}>
-                    <summary className="px-4 py-3 cursor-pointer font-bold hover:text-electric-emerald transition-colors">
+                  <details className={service.isFeatured ? 'bg-primary-foreground/10 rounded-xl' : 'bg-secondary rounded-xl'}>
+                    <summary className={`px-4 py-3 cursor-pointer font-bold transition-colors ${service.isFeatured ? 'text-primary-foreground hover:text-primary-foreground/80' : 'text-foreground hover:text-primary'}`}>
                       View Features
                     </summary>
                     <ul className="px-4 pb-4 space-y-2">
                       {service.features.map((feature, idx) => (
                         <li key={idx} className="flex items-start gap-3">
-                          <CheckIcon className={`w-5 h-5 mt-0.5 flex-shrink-0 ${service.isFeatured ? 'text-white' : 'text-electric-emerald'}`} />
-                          <span className="text-sm">{feature}</span>
+                          <CheckIcon className={`w-5 h-5 mt-0.5 flex-shrink-0 ${service.isFeatured ? 'text-primary-foreground' : 'text-primary'}`} />
+                          <span className={`text-sm ${service.isFeatured ? 'text-primary-foreground/90' : 'text-foreground'}`}>{feature}</span>
                         </li>
                       ))}
                     </ul>

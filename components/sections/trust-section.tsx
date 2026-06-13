@@ -24,41 +24,40 @@ const trustItems = [
 
 export const TrustSection: React.FC = () => {
   return (
-    <section className="section-container bg-white">
+    <section id="why-unexgen" className="section-container">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Left - Large Feature Image */}
-        <div className="relative">
-          <div className="relative h-[600px] rounded-3xl overflow-hidden shadow-2xl">
+        <div className="relative hidden lg:block">
+          <div className="relative h-[600px] rounded-3xl overflow-hidden shadow-2xl card-elevated">
             <Image
               src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=800&q=80"
-              alt="Professional HVAC technician at work"
+              alt="Professional technician at work"
               fill
               className="object-cover"
             />
           </div>
           {/* Floating Badge */}
-          <div className="absolute -bottom-8 -right-8 glass-light p-8 rounded-2xl shadow-xl">
+          <div className="absolute -bottom-8 -right-8 glass-light p-8 rounded-2xl shadow-xl border border-border">
             <div className="text-center">
-              <div className="text-5xl font-black text-electric-emerald mb-2">45+</div>
-              <div className="text-gray-600 font-bold">Years Experience</div>
+              <div className="text-5xl font-black text-primary mb-2">15+</div>
+              <div className="text-foreground font-bold">Years Experience</div>
             </div>
           </div>
         </div>
 
         {/* Right - Content */}
         <div>
-          <h2 className="text-5xl font-black mb-6 text-gray-900">
-            Trusted by <span className="text-electric-emerald">500+ Facilities</span>
+          <h2 className="text-5xl font-black mb-6 text-foreground">
+            Trusted by <span className="text-gradient-emerald">500+ Facilities</span>
           </h2>
-          <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-            At Unexgen, we treat your property like our own. Our expert team has decades of combined experience 
-            and receives ongoing training to stay ahead of the latest energy technologies.
+          <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+            At Unexgen, we treat your property and sustainability goals with utmost commitment. Our expert team delivers industry-leading expertise and stays ahead of emerging energy technologies.
           </p>
 
           <div className="space-y-6">
             {trustItems.map((item) => (
               <div key={item.id} className="flex gap-4 items-start">
-                <div className="relative w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+                <div className="relative w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 border border-border">
                   <Image
                     src={item.image}
                     alt={item.title}
@@ -67,8 +66,8 @@ export const TrustSection: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
-                  <p className="text-gray-600">{item.description}</p>
+                  <h3 className="text-lg font-bold text-foreground mb-1">{item.title}</h3>
+                  <p className="text-muted-foreground text-sm">{item.description}</p>
                 </div>
               </div>
             ))}

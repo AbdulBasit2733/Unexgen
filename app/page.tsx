@@ -9,6 +9,12 @@ import { Testimonials } from "@/components/sections/testimonials";
 import { TrustBar } from "@/components/sections/trust-bar";
 import { TrustSection } from "@/components/sections/trust-section";
 import { EfficiencyCompareCard } from "@/components/ui/efficiency-compare-card";
+import { IndustriesShowcase } from "@/components/sections/industries-showcase";
+import { TechnologyEcosystem } from "@/components/sections/technology-ecosystem";
+import { ROICalculator } from "@/components/sections/roi-calculator";
+import { GovernmentSubsidies } from "@/components/sections/government-subsidies";
+import { WhyUnexgen } from "@/components/sections/why-unexgen";
+import { ContactSection } from "@/components/sections/contact-section";
 
 export default function Home() {
   return (
@@ -19,23 +25,29 @@ export default function Home() {
         <TrustBar />
         <ServicesGrid />
         <ProcessSection />
-        {/* Efficiency Compare Section */}
+        
+        {/* Thermal Efficiency Section */}
         <section className="section-container">
           <div className="mb-12 text-center">
-            <h2 className="text-5xl font-black mb-4">
-              Thermal{" "}
-              <span className="text-electric-emerald">Optimization</span>
+            <h2 className="text-5xl font-black mb-4 text-balance">
+              AI-Powered <span className="text-gradient-emerald">Thermal Optimization</span>
             </h2>
-            <p className="text-slate-500 text-lg">
-              AI-powered thermal imaging reveals energy waste
+            <p className="text-muted-foreground text-lg">
+              Advanced thermal imaging reveals hidden energy waste and optimization opportunities
             </p>
           </div>
           <EfficiencyCompareCard />
         </section>
 
+        <TechnologyEcosystem />
+        <IndustriesShowcase />
+        <WhyUnexgen />
+        <ROICalculator />
+        <GovernmentSubsidies />
         <PortfolioShowcase />
         <TrustSection />
         <Testimonials />
+        <ContactSection />
         <FinalCTA />
       </main>
       <Footer />
