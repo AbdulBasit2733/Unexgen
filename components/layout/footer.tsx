@@ -2,53 +2,56 @@ import React from "react";
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-50 border-t border-gray-200">
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+    <footer className="bg-card border-t border-border">
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div>
-            <div className="bg-transparent inline-block mb-4">
-              <div className="text-gray-900 text-xl font-bold">UNEXGEN</div>
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                <span className="text-primary-foreground font-bold text-sm">U</span>
+              </div>
+              <div className="text-foreground text-lg font-bold">UNEXGEN</div>
             </div>
-            <p className="text-gray-600 text-sm">
-              Next-generation sustainable energy infrastructure
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              Next-generation sustainable energy infrastructure powering India&apos;s clean energy transition.
             </p>
           </div>
 
           {/* Solutions */}
           <div>
-            <h4 className="text-gray-900 font-bold mb-4">Solutions</h4>
-            <ul className="space-y-2 text-sm text-gray-600">
+            <h4 className="text-foreground font-bold mb-6 text-sm uppercase tracking-wider">Solutions</h4>
+            <ul className="space-y-3 text-sm text-muted-foreground">
               <li>
                 <a
-                  href="#"
-                  className="hover:text-electric-emerald transition-colors"
+                  href="#solutions"
+                  className="hover:text-primary transition-colors"
                 >
                   Solar Systems
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
-                  className="hover:text-electric-emerald transition-colors"
+                  href="#solutions"
+                  className="hover:text-primary transition-colors"
                 >
                   Green Hydrogen
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
-                  className="hover:text-electric-emerald transition-colors"
+                  href="#solutions"
+                  className="hover:text-primary transition-colors"
                 >
-                  Heat Pumps
+                  Heat Pumps & HVAC
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
-                  className="hover:text-electric-emerald transition-colors"
+                  href="#solutions"
+                  className="hover:text-primary transition-colors"
                 >
-                  HVAC Systems
+                  EV Charging
                 </a>
               </li>
             </ul>
@@ -56,20 +59,28 @@ export const Footer: React.FC = () => {
 
           {/* Company */}
           <div>
-            <h4 className="text-gray-900 font-bold mb-4">Company</h4>
-            <ul className="space-y-2 text-sm text-gray-600">
+            <h4 className="text-foreground font-bold mb-6 text-sm uppercase tracking-wider">Company</h4>
+            <ul className="space-y-3 text-sm text-muted-foreground">
               <li>
                 <a
                   href="#"
-                  className="hover:text-electric-emerald transition-colors"
+                  className="hover:text-primary transition-colors"
                 >
-                  About
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#portfolio"
+                  className="hover:text-primary transition-colors"
+                >
+                  Portfolio
                 </a>
               </li>
               <li>
                 <a
                   href="#"
-                  className="hover:text-electric-emerald transition-colors"
+                  className="hover:text-primary transition-colors"
                 >
                   Careers
                 </a>
@@ -77,15 +88,7 @@ export const Footer: React.FC = () => {
               <li>
                 <a
                   href="#"
-                  className="hover:text-electric-emerald transition-colors"
-                >
-                  Partners
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="hover:text-electric-emerald transition-colors"
+                  className="hover:text-primary transition-colors"
                 >
                   Contact
                 </a>
@@ -93,37 +96,37 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Certifications */}
+          {/* Certifications & Compliance */}
           <div>
-            <h4 className="text-gray-900 font-bold mb-4">Certifications</h4>
-            <div className="flex flex-wrap gap-3">
-              <div className="bg-white border border-electric-emerald px-3 py-1 rounded text-xs text-electric-emerald font-semibold">
-                ISO 9001
+            <h4 className="text-foreground font-bold mb-6 text-sm uppercase tracking-wider">Certifications</h4>
+            <div className="flex flex-col gap-3">
+              <div className="bg-secondary border border-primary px-3 py-2 rounded-lg text-xs text-primary font-semibold">
+                ISO 9001:2015
               </div>
-              <div className="bg-white border border-electric-emerald px-3 py-1 rounded text-xs text-electric-emerald font-semibold">
-                ISO 14001
+              <div className="bg-secondary border border-primary px-3 py-2 rounded-lg text-xs text-primary font-semibold">
+                ISO 14001:2015
               </div>
-              <div className="bg-white border border-electric-emerald px-3 py-1 rounded text-xs text-electric-emerald font-semibold">
-                Net Zero
+              <div className="bg-secondary border border-primary px-3 py-2 rounded-lg text-xs text-primary font-semibold">
+                Net Zero Certified
               </div>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-600 text-sm">
-            © 2026 Unexgen. All rights reserved.
+        <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-muted-foreground text-sm">
+            © 2026 Unexgen Technology. All rights reserved.
           </p>
-          <div className="flex gap-6 text-sm text-gray-600">
+          <div className="flex gap-6 text-sm text-muted-foreground">
             <a
               href="#"
-              className="hover:text-electric-emerald transition-colors"
+              className="hover:text-primary transition-colors"
             >
               Privacy Policy
             </a>
             <a
               href="#"
-              className="hover:text-electric-emerald transition-colors"
+              className="hover:text-primary transition-colors"
             >
               Terms of Service
             </a>

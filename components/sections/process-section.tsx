@@ -35,13 +35,13 @@ const processSteps = [
 
 export const ProcessSection: React.FC = () => {
   return (
-    <section className="section-container bg-gray-50">
+    <section className="section-container bg-secondary">
       <div className="text-center mb-16">
-        <h2 className="text-5xl font-black mb-6 text-gray-900">
-          How <span className="text-electric-emerald">It Works</span>
+        <h2 className="text-5xl font-black mb-6 text-foreground">
+          How <span className="text-gradient-emerald">It Works</span>
         </h2>
-        <p className="text-gray-600 text-xl max-w-3xl mx-auto">
-          From consultation to installation, we handle everything to ensure your transition to clean energy is seamless
+        <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
+          From consultation to installation, we handle everything to ensure your transition to clean energy is seamless and hassle-free
         </p>
       </div>
 
@@ -63,24 +63,24 @@ export const ProcessSection: React.FC = () => {
                   className="object-cover"
                 />
                 {/* Step Number Badge */}
-                <div className="absolute top-6 left-6 w-16 h-16 bg-electric-emerald rounded-full flex items-center justify-center">
-                  <span className="text-3xl font-black text-white">{step.id}</span>
+                <div className="absolute top-6 left-6 w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-lg">
+                  <span className="text-3xl font-black text-primary-foreground">{step.id}</span>
                 </div>
               </div>
             </div>
 
             {/* Content */}
             <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
-              <h3 className="text-4xl font-black mb-4 text-gray-900">{step.title}</h3>
-              <p className="text-xl text-gray-600 mb-6 leading-relaxed">
+              <h3 className="text-4xl font-black mb-4 text-foreground">{step.title}</h3>
+              <p className="text-xl text-muted-foreground mb-6 leading-relaxed">
                 {step.description}
               </p>
 
               <ul className="space-y-3">
                 {step.features.map((feature, idx) => (
                   <li key={idx} className="flex items-center gap-3">
-                    <CheckIcon className="w-6 h-6 text-electric-emerald flex-shrink-0" />
-                    <span className="text-lg text-gray-900 font-medium">{feature}</span>
+                    <CheckIcon className="w-6 h-6 text-primary flex-shrink-0" />
+                    <span className="text-lg text-foreground font-medium">{feature}</span>
                   </li>
                 ))}
               </ul>

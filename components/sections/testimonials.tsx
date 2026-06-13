@@ -1,43 +1,56 @@
+'use client';
+
 import React from 'react';
 import { StarIcon } from '@/components/icons/Icons';
 import { testimonials } from '@/lib/utils';
+import { Carousel } from '@/components/ui/carousel';
+import { Quote } from 'lucide-react';
+
+const TestimonialCard: React.FC<{ testimonial: typeof testimonials[0] }> = ({ testimonial }) => (
+  <div className="px-6 h-full">
+    <div className="card-elevated p-8 h-full flex flex-col">
+      {/* Quote Icon */}
+      <Quote className="w-8 h-8 text-primary mb-4 opacity-30" />
+
+      {/* Star Rating */}
+      <div className="flex gap-1 mb-6">
+        {[...Array(testimonial.rating)].map((_, idx) => (
+          <StarIcon key={idx} className="w-5 h-5 text-primary" filled />
+        ))}
+      </div>
+
+      {/* Quote */}
+      <p className="text-lg mb-8 leading-relaxed text-foreground flex-1">
+        &ldquo;{testimonial.quote}&rdquo;
+      </p>
+
+      {/* Author */}
+      <div className="pt-6 border-t border-border">
+        <div className="font-bold text-foreground">{testimonial.author}</div>
+        <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+        <div className="text-sm text-primary font-semibold">{testimonial.company}</div>
+      </div>
+    </div>
+  </div>
+);
 
 export const Testimonials: React.FC = () => {
   return (
-    <section className="section-container bg-white">
-      <div className="mb-12">
-        <h2 className="text-5xl font-black mb-4 text-gray-900">
-          Client <span className="text-electric-emerald">Results</span>
+    <section id="testimonials" className="section-container">
+      <div className="mb-12 text-center">
+        <h2 className="text-5xl font-black mb-4 text-balance">
+          Client <span className="text-gradient-emerald">Success Stories</span>
         </h2>
-        <p className="text-gray-600 text-lg">
-          Real feedback from facility managers and property owners
+        <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          Real feedback from facility managers, property owners, and industrial partners
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <Carousel autoplay autoplayDelay={5000} showDots>
         {testimonials.map((testimonial) => (
-          <div key={testimonial.id} className="card-glass">
-            {/* Star Rating */}
-            <div className="flex gap-1 mb-4">
-              {[...Array(testimonial.rating)].map((_, idx) => (
-                <StarIcon key={idx} className="w-5 h-5 text-electric-emerald" filled />
-              ))}
-            </div>
-
-            {/* Quote */}
-            <p className="text-lg mb-6 leading-relaxed text-gray-900">
-              &ldquo;{testimonial.quote}&rdquo;
-            </p>
-
-            {/* Author */}
-            <div className="pt-6 border-t border-gray-200">
-              <div className="font-bold text-gray-900">{testimonial.author}</div>
-              <div className="text-sm text-gray-600">{testimonial.role}</div>
-              <div className="text-sm text-electric-emerald">{testimonial.company}</div>
-            </div>
-          </div>
+          <TestimonialCard key={testimonial.id} testimonial={testimonial} />
         ))}
-      </div>
+      </Carousel>
     </section>
   );
 };
