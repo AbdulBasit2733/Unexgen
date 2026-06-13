@@ -1,5 +1,6 @@
 import React from 'react';
 import { Award, Users, Zap, BarChart3, Shield, Clock, Leaf, Lightbulb } from 'lucide-react';
+import { AnimatedCounter } from '@/components/ui/animated-counter';
 
 interface ValueProp {
   id: string;
@@ -222,15 +223,17 @@ export const WhyUnexgen: React.FC = () => {
       {/* Testimonial Stats */}
       <div className="mt-20 grid grid-cols-1 md:grid-cols-4 gap-8">
         {[
-          { stat: '500+', label: 'Active Projects', color: 'from-blue-500 to-cyan-500' },
-          { stat: '98%', label: 'Client Satisfaction', color: 'from-green-500 to-emerald-500' },
-          { stat: '₹500Cr', label: 'Savings Generated', color: 'from-purple-500 to-pink-500' },
-          { stat: '₹100Cr', label: 'Subsidies Unlocked', color: 'from-orange-500 to-red-500' }
+          { value: '500+', label: 'Active Projects', color: 'from-blue-500 to-cyan-500' },
+          { value: '98%', label: 'Client Satisfaction', color: 'from-green-500 to-emerald-500' },
+          { value: '₹500Cr', label: 'Savings Generated', color: 'from-purple-500 to-pink-500' },
+          { value: '₹100Cr', label: 'Subsidies Unlocked', color: 'from-orange-500 to-red-500' }
         ].map((item, idx) => (
           <div key={idx} className="card-elevated p-8 text-center">
-            <div className={`text-5xl font-black bg-gradient-to-r ${item.color} bg-clip-text text-transparent mb-3`}>
-              {item.stat}
-            </div>
+            <AnimatedCounter
+              value={item.value}
+              duration={2000}
+              className={`text-5xl font-black bg-gradient-to-r ${item.color} bg-clip-text text-transparent mb-3 block`}
+            />
             <p className="text-muted-foreground font-semibold">{item.label}</p>
           </div>
         ))}
