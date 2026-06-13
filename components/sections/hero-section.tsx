@@ -82,19 +82,19 @@ export const HeroSection: React.FC = () => {
             </div>
 
             {/* Floating Stats Card */}
-            <div className="absolute -bottom-8 -left-8 glass-light p-8 rounded-2xl shadow-2xl border border-border max-w-xs">
-              <h3 className="font-bold text-foreground mb-4">Real-time Performance</h3>
+            <div className="absolute -bottom-8 -left-8 p-8 rounded-2xl shadow-2xl border border-border max-w-xs" style={{ backgroundColor: '#000000' }}>
+              <h3 className="font-bold text-white mb-4">Real-time Performance</h3>
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Energy Generated</span>
+                  <span className="text-gray-400">Energy Generated </span>
                   <span className="font-bold text-primary">2,450 kWh</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Carbon Saved</span>
+                  <span className="text-gray-400">Carbon Saved</span>
                   <span className="font-bold text-primary">1.2 Tons</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">System Health</span>
+                  <span className="text-gray-400">System Health</span>
                   <span className="font-bold text-primary">98.5%</span>
                 </div>
               </div>
