@@ -25,19 +25,6 @@ export default function Home() {
         <TrustBar />
         <ServicesGrid />
         <ProcessSection />
-        
-        {/* Thermal Efficiency Section */}
-        <section className="section-container">
-          <div className="mb-12 text-center">
-            <h2 className="text-5xl font-black mb-4 text-balance">
-              AI-Powered <span className="text-gradient-emerald">Thermal Optimization</span>
-            </h2>
-            <p className="text-muted-foreground text-lg">
-              Advanced thermal imaging reveals hidden energy waste and optimization opportunities
-            </p>
-          </div>
-          <EfficiencyCompareCard />
-        </section>
 
         <TechnologyEcosystem />
         <IndustriesShowcase />

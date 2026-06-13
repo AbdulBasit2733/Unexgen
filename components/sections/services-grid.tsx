@@ -86,31 +86,19 @@ export const ServicesGrid: React.FC = () => {
                 </div>
 
                 {/* Content Column */}
-                <div className="md:col-span-3 p-8">
-                  <h3 className={`text-3xl font-black mb-3 ${service.isFeatured ? 'text-primary-foreground' : 'text-foreground'}`}>
-                    {service.title}
-                  </h3>
-                  <p className={`text-lg mb-4 ${service.isFeatured ? 'text-primary-foreground/90' : 'text-muted-foreground'}`}>
-                    {service.description}
-                  </p>
-
-                  <div className={`text-2xl font-bold mb-6 ${service.isFeatured ? 'text-primary-foreground' : 'text-primary'}`}>
-                    {service.lifetimeSavings}
+                <div className="md:col-span-3 p-8 flex flex-col justify-between">
+                  <div>
+                    <h3 className={`text-3xl font-black mb-3 ${service.isFeatured ? 'text-primary-foreground' : 'text-foreground'}`}>
+                      {service.title}
+                    </h3>
+                    <p className={`text-lg mb-6 ${service.isFeatured ? 'text-primary-foreground/90' : 'text-muted-foreground'}`}>
+                      {service.description}
+                    </p>
                   </div>
 
-                  <details className={service.isFeatured ? 'bg-primary-foreground/10 rounded-xl' : 'bg-secondary rounded-xl'}>
-                    <summary className={`px-4 py-3 cursor-pointer font-bold transition-colors ${service.isFeatured ? 'text-primary-foreground hover:text-primary-foreground/80' : 'text-foreground hover:text-primary'}`}>
-                      View Features
-                    </summary>
-                    <ul className="px-4 pb-4 space-y-2">
-                      {service.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-start gap-3">
-                          <CheckIcon className={`w-5 h-5 mt-0.5 flex-shrink-0 ${service.isFeatured ? 'text-primary-foreground' : 'text-primary'}`} />
-                          <span className={`text-sm ${service.isFeatured ? 'text-primary-foreground/90' : 'text-foreground'}`}>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </details>
+                  <div className={`text-2xl font-bold ${service.isFeatured ? 'text-primary-foreground' : 'text-primary'}`}>
+                    {service.lifetimeSavings}
+                  </div>
                 </div>
               </div>
             </Card>
