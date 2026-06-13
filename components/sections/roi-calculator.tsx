@@ -50,19 +50,19 @@ export const ROICalculator: React.FC = () => {
   }, [monthlyBill, systemType, systemInfo, multiplier]);
 
   return (
-    <section className="section-container bg-secondary">
-      <div className="text-center mb-16">
+    <section className="section-container">
+      <div className="text-center mb-12">
         <h2 className="text-5xl font-black mb-4 text-balance text-foreground">
-          Calculate Your <span className="text-gradient-emerald">ROI & Savings</span>
+          Estimate Your <span className="text-gradient-emerald">Energy Savings</span>
         </h2>
         <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-          See exactly how much you&apos;ll save with Unexgen&apos;s renewable energy solutions
+          Discover how much you can save with Unexgen solutions
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-        {/* Input Section */}
-        <div className="space-y-8">
+      <div className="space-y-8 max-w-2xl mx-auto">
+        {/* Input Controls */}
+        <div className="space-y-6">
           {/* Monthly Bill Input */}
           <div>
             <label className="block text-sm font-semibold text-foreground mb-3">
@@ -82,9 +82,6 @@ export const ROICalculator: React.FC = () => {
                 ₹{monthlyBill.toLocaleString()}
               </div>
             </div>
-            <div className="text-xs text-muted-foreground mt-2">
-              Annual: ₹{(monthlyBill * 12).toLocaleString()}
-            </div>
           </div>
 
           {/* System Type */}
@@ -97,7 +94,7 @@ export const ROICalculator: React.FC = () => {
                 <button
                   key={key}
                   onClick={() => setSystemType(key)}
-                  className={`p-4 rounded-xl border-2 transition-all text-center ${
+                  className={`p-3 rounded-lg border-2 transition-all text-center text-sm ${
                     systemType === key
                       ? 'border-primary bg-primary/10 text-foreground font-bold'
                       : 'border-border text-muted-foreground hover:border-primary/50'
@@ -116,94 +113,52 @@ export const ROICalculator: React.FC = () => {
             </label>
             <div className="grid grid-cols-3 gap-3">
               {[
-                { id: 'metros', label: 'Metro Cities', note: 'Standard rate' },
-                { id: 'tier2', label: 'Tier-2 Cities', note: '+15% incentive' },
-                { id: 'rural', label: 'Rural Areas', note: '+30% incentive' }
-              ].map(({ id, label, note }) => (
+                { id: 'metros', label: 'Metro Cities' },
+                { id: 'tier2', label: 'Tier-2 Cities' },
+                { id: 'rural', label: 'Rural Areas' }
+              ].map(({ id, label }) => (
                 <button
                   key={id}
                   onClick={() => setLocation(id)}
-                  className={`p-4 rounded-xl border-2 transition-all text-center text-sm ${
+                  className={`p-3 rounded-lg border-2 transition-all text-center text-sm ${
                     location === id
                       ? 'border-primary bg-primary/10 text-foreground font-bold'
                       : 'border-border text-muted-foreground hover:border-primary/50'
                   }`}
                 >
-                  <div className="font-semibold">{label}</div>
-                  <div className="text-xs mt-1 opacity-70">{note}</div>
+                  {label}
                 </button>
               ))}
             </div>
           </div>
         </div>
 
-        {/* Results Section */}
-        <div className="space-y-6">
-          {/* Key Metrics */}
-          <div className="grid grid-cols-2 gap-4">
-            {[
-              {
-                icon: <Zap className="w-6 h-6" />,
-                label: 'Annual Savings',
-                value: `₹${calculations.adjustedSavings.toLocaleString('en-IN', { maximumFractionDigits: 0 })}`,
-                subtext: `${((calculations.adjustedSavings / calculations.annualBill) * 100).toFixed(0)}% of current bill`
-              },
-              {
-                icon: <DollarSign className="w-6 h-6" />,
-                label: 'Government Subsidy',
-                value: `₹${(calculations.subsidyAmount / 100000).toFixed(1)}L+`,
-                subtext: 'Instant incentive'
-              },
-              {
-                icon: <TrendingUp className="w-6 h-6" />,
-                label: 'Payback Period',
-                value: `${calculations.paybackPeriod.toFixed(1)} years`,
-                subtext: 'After subsidy adjustment'
-              },
-              {
-                icon: <Calculator className="w-6 h-6" />,
-                label: '10-Year Savings',
-                value: `₹${(calculations.tenYearSavings / 100000).toFixed(1)}L+`,
-                subtext: 'Total lifetime benefit'
-              }
-            ].map((metric, idx) => (
-              <div key={idx} className="card-elevated p-6">
-                <div className="text-primary mb-2">{metric.icon}</div>
-                <p className="text-xs font-semibold text-muted-foreground mb-2">{metric.label}</p>
-                <p className="text-2xl font-black text-foreground mb-1">{metric.value}</p>
-                <p className="text-xs text-muted-foreground">{metric.subtext}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* Detailed Breakdown */}
-          <div className="card-elevated p-6">
-            <h3 className="font-bold text-foreground mb-4">Investment Breakdown</h3>
-            <div className="space-y-3">
-              <div className="flex justify-between items-center py-2 border-b border-border">
-                <span className="text-muted-foreground">System Cost</span>
-                <span className="font-bold text-foreground">₹{(calculations.systemCost / 100000).toFixed(1)}L</span>
-              </div>
-              <div className="flex justify-between items-center py-2 border-b border-border text-primary">
-                <span>Govt. Subsidy (35-40%)</span>
-                <span className="font-bold">-₹{(calculations.subsidyAmount / 100000).toFixed(1)}L</span>
-              </div>
-              <div className="flex justify-between items-center py-3 bg-primary/10 px-3 rounded-lg">
-                <span className="font-bold text-foreground">Net Investment</span>
-                <span className="text-2xl font-black text-primary">₹{(calculations.netInvestment / 100000).toFixed(1)}L</span>
-              </div>
-              <div className="flex justify-between items-center py-2 mt-4 pt-4 border-t border-border">
-                <span className="text-muted-foreground text-sm">Monthly EMI (5-year)</span>
-                <span className="font-bold text-foreground">₹{(calculations.emiAmount / 1000).toFixed(0)}K/month</span>
-              </div>
+        {/* Results - Simplified */}
+        <div className="grid grid-cols-2 gap-4">
+          {[
+            {
+              icon: <Zap className="w-6 h-6" />,
+              label: 'Annual Savings',
+              value: `₹${calculations.adjustedSavings.toLocaleString('en-IN', { maximumFractionDigits: 0 })}`
+            },
+            {
+              icon: <TrendingUp className="w-6 h-6" />,
+              label: 'Payback Period',
+              value: `${calculations.paybackPeriod.toFixed(1)} years`
+            }
+          ].map((metric, idx) => (
+            <div key={idx} className="card-elevated p-6 text-center">
+              <div className="text-primary mb-3 flex justify-center">{metric.icon}</div>
+              <p className="text-sm font-semibold text-muted-foreground mb-2">{metric.label}</p>
+              <p className="text-3xl font-black text-foreground">{metric.value}</p>
             </div>
-          </div>
-
-          {/* CTA */}
-          <button className="w-full py-4 bg-primary text-primary-foreground rounded-lg font-bold text-lg hover:bg-primary/90 transition-colors">
-            Get Personalized Quote
-          </button>
+          ))}
         </div>
+
+        {/* CTA */}
+        <button className="w-full py-4 bg-primary text-primary-foreground rounded-lg font-bold text-lg hover:bg-primary/90 transition-colors">
+          Get Free Energy Consultation
+        </button>
       </div>
     </section>
   );
