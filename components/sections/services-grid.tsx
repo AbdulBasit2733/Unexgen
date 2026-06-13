@@ -16,7 +16,7 @@ export const ServicesGrid: React.FC = () => {
   return (
     <section id="solutions" className="section-container">
       <div className="text-center mb-16">
-        <h2 className="text-5xl font-black mb-6 text-balance text-foreground">
+        <h2 className="section-heading mb-6">
           Energy <span className="text-gradient-emerald">Solutions</span>
         </h2>
         <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
@@ -27,7 +27,7 @@ export const ServicesGrid: React.FC = () => {
       {/* Services Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {services.map((service) => (
-          <div key={service.id} className={`rounded-2xl overflow-hidden border transition-all ${service.isFeatured ? 'border-primary bg-primary text-primary-foreground md:col-span-2 lg:col-span-1' : 'border-border bg-card hover:shadow-lg'}`}>
+          <div key={service.id} className={`rounded-2xl overflow-hidden border transition-all ${service.isFeatured ? 'border-primary bg-primary/10 text-foreground md:col-span-2 lg:col-span-1' : 'border-border bg-card hover:shadow-lg'}`}>
             <div className="relative h-48 md:h-56">
               <Image
                 src={serviceImages[service.id] || 'https://via.placeholder.com/600x400/10b981/ffffff?text=Energy+Solution'}
@@ -40,7 +40,7 @@ export const ServicesGrid: React.FC = () => {
               <h3 className="text-2xl font-black mb-2">
                 {service.title}
               </h3>
-              <p className={`text-sm mb-4 leading-relaxed ${service.isFeatured ? 'text-primary-foreground/90' : 'text-muted-foreground'}`}>
+              <p className="text-sm mb-4 leading-relaxed text-muted-foreground">
                 {service.description}
               </p>
             </div>

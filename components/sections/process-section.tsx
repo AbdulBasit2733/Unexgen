@@ -13,7 +13,7 @@ const processSteps = [
   {
     id: 2,
     title: 'Custom System Design',
-    description: 'AI-powered design creates the optimal solar, HVAC, or hydrogen solution for your needs.',
+    description: 'Site-specific design creates the optimal solar, HVAC, or hydrogen solution for your needs.',
     image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&q=80',
     features: ['3D modeling', 'Tax credit analysis', 'Financing options']
   },
@@ -27,7 +27,7 @@ const processSteps = [
   {
     id: 4,
     title: '24/7 Monitoring & Support',
-    description: 'Real-time system monitoring with instant alerts and predictive maintenance.',
+    description: 'Real-time system monitoring with instant alerts and preventive maintenance.',
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80',
     features: ['IoT sensors', 'Mobile app', 'Emergency service']
   }
@@ -37,7 +37,7 @@ export const ProcessSection: React.FC = () => {
   return (
     <section className="section-container bg-secondary">
       <div className="text-center mb-16">
-        <h2 className="text-5xl font-black mb-6 text-foreground">
+        <h2 className="section-heading mb-6">
           How <span className="text-gradient-emerald">It Works</span>
         </h2>
         <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
@@ -71,7 +71,7 @@ export const ProcessSection: React.FC = () => {
 
             {/* Content */}
             <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
-              <h3 className="text-4xl font-black mb-4 text-foreground">{step.title}</h3>
+              <h3 className="text-3xl sm:text-4xl font-black mb-4 text-foreground">{step.title}</h3>
               <p className="text-xl text-muted-foreground mb-6 leading-relaxed">
                 {step.description}
               </p>
@@ -80,7 +80,7 @@ export const ProcessSection: React.FC = () => {
                 {step.features.map((feature, idx) => (
                   <li key={idx} className="flex items-center gap-3">
                     <CheckIcon className="w-6 h-6 text-primary flex-shrink-0" />
-                    <span className="text-lg text-foreground font-medium">{feature}</span>
+                    <span className="text-base sm:text-lg text-foreground font-medium">{feature}</span>
                   </li>
                 ))}
               </ul>

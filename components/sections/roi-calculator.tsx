@@ -52,7 +52,7 @@ export const ROICalculator: React.FC = () => {
   return (
     <section className="section-container">
       <div className="text-center mb-12">
-        <h2 className="text-5xl font-black mb-4 text-balance text-foreground">
+        <h2 className="section-heading mb-4">
           Estimate Your <span className="text-gradient-emerald">Energy Savings</span>
         </h2>
         <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -89,7 +89,7 @@ export const ROICalculator: React.FC = () => {
             <label className="block text-sm font-semibold text-foreground mb-3">
               Solution Type
             </label>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {Object.entries(systemFactors).map(([key, value]) => (
                 <button
                   key={key}
@@ -111,7 +111,7 @@ export const ROICalculator: React.FC = () => {
             <label className="block text-sm font-semibold text-foreground mb-3">
               Location Type
             </label>
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {[
                 { id: 'metros', label: 'Metro Cities' },
                 { id: 'tier2', label: 'Tier-2 Cities' },
@@ -134,7 +134,7 @@ export const ROICalculator: React.FC = () => {
         </div>
 
         {/* Results - Simplified */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {[
             {
               icon: <Zap className="w-6 h-6" />,
@@ -150,7 +150,7 @@ export const ROICalculator: React.FC = () => {
             <div key={idx} className="card-elevated p-6 text-center">
               <div className="text-primary mb-3 flex justify-center">{metric.icon}</div>
               <p className="text-sm font-semibold text-muted-foreground mb-2">{metric.label}</p>
-              <p className="text-3xl font-black text-foreground">{metric.value}</p>
+              <p className="text-2xl sm:text-3xl font-black text-foreground">{metric.value}</p>
             </div>
           ))}
         </div>

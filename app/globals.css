@@ -74,20 +74,20 @@
   --ring: #27C08D;
   
   /* 30% - Secondary & Supporting Colors */
-  --secondary: #e8f5f0;
-  --secondary-foreground: #0f3a30;
-  --muted: #d4e8df;
-  --muted-foreground: #4a6e62;
+  --secondary: #eef6f3;
+  --secondary-foreground: #123a31;
+  --muted: #dfece7;
+  --muted-foreground: #4f6d64;
   
   /* 60% - Neutral Background & Text */
-  --background: #fafbfa;
-  --foreground: #1a1a1a;
+  --background: #fbfcfb;
+  --foreground: #17211e;
   --card: #ffffff;
   --card-foreground: #1a1a1a;
   --popover: #ffffff;
   --popover-foreground: #1a1a1a;
-  --border: #e0e0e0;
-  --input: #f5f5f5;
+  --border: #dce7e2;
+  --input: #f4f8f6;
   
   /* Destructive & Other States */
   --destructive: #ef4444;
@@ -131,20 +131,20 @@
   --ring: #27C08D;
   
   /* 30% - Secondary & Supporting Colors */
-  --secondary: #1a2f28;
-  --secondary-foreground: #c8e6db;
-  --muted: #2a3f38;
-  --muted-foreground: #8ca699;
+  --secondary: #14241f;
+  --secondary-foreground: #d6eee6;
+  --muted: #20332d;
+  --muted-foreground: #9bb6ad;
   
   /* 60% - Neutral Background & Text */
-  --background: #0a0f0d;
-  --foreground: #f0f0f0;
-  --card: #141a18;
-  --card-foreground: #f0f0f0;
-  --popover: #141a18;
-  --popover-foreground: #f0f0f0;
-  --border: #2a3f38;
-  --input: #1a2f28;
+  --background: #09110e;
+  --foreground: #eef6f3;
+  --card: #101916;
+  --card-foreground: #eef6f3;
+  --popover: #101916;
+  --popover-foreground: #eef6f3;
+  --border: #233b34;
+  --input: #14241f;
   
   /* Destructive & Other States */
   --destructive: #ff6b6b;
@@ -187,20 +187,20 @@
     --ring: #27C08D;
     
     /* 30% - Secondary */
-    --secondary: #1a2f28;
-    --secondary-foreground: #c8e6db;
-    --muted: #2a3f38;
-    --muted-foreground: #8ca699;
+    --secondary: #14241f;
+    --secondary-foreground: #d6eee6;
+    --muted: #20332d;
+    --muted-foreground: #9bb6ad;
     
     /* 60% - Neutral */
-    --background: #0a0f0d;
-    --foreground: #f0f0f0;
-    --card: #141a18;
-    --card-foreground: #f0f0f0;
-    --popover: #141a18;
-    --popover-foreground: #f0f0f0;
-    --border: #2a3f38;
-    --input: #1a2f28;
+    --background: #09110e;
+    --foreground: #eef6f3;
+    --card: #101916;
+    --card-foreground: #eef6f3;
+    --popover: #101916;
+    --popover-foreground: #eef6f3;
+    --border: #233b34;
+    --input: #14241f;
     
     /* Destructive */
     --destructive: #ff6b6b;
@@ -230,45 +230,62 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
   }
   html {
     @apply font-sans;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+  img,
+  svg,
+  video,
+  canvas {
+    max-width: 100%;
+  }
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
   }
 }
 
 @layer components {
   /* Button Styles */
   .btn-primary {
-    @apply bg-primary text-primary-foreground font-semibold rounded-lg px-6 py-3 
+    @apply bg-primary text-primary-foreground font-semibold rounded-lg px-5 py-3 
            transition-all duration-300 hover:opacity-90 shadow-md hover:shadow-lg
            active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
   }
 
   .btn-secondary {
-    @apply bg-secondary text-secondary-foreground font-semibold rounded-lg px-6 py-3 
+    @apply bg-secondary text-secondary-foreground font-semibold rounded-lg px-5 py-3 
            transition-all duration-300 hover:bg-muted shadow-md hover:shadow-lg
            active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
   }
 
   /* Glassmorphism Styles */
   .glass-light {
-    @apply bg-white/80 backdrop-blur-lg border border-white/30 rounded-2xl;
+    @apply bg-card/85 text-card-foreground backdrop-blur-lg border border-border rounded-2xl;
   }
 
   .glass-dark {
-    @apply bg-black/40 backdrop-blur-lg border border-white/10 rounded-2xl;
+    @apply bg-card/85 text-card-foreground backdrop-blur-lg border border-border rounded-2xl;
   }
 
   /* Typography Utilities */
   .text-gradient-emerald {
-    @apply bg-gradient-to-r from-primary via-primary to-emerald-500 
-           bg-clip-text text-transparent;
+    @apply text-primary;
   }
 
   /* Section Container */
   .section-container {
-    @apply max-w-7xl mx-auto px-6 py-16 md:py-24;
+    @apply max-w-7xl mx-auto px-4 py-14 sm:px-6 md:py-20 lg:py-24;
+  }
+
+  .section-heading {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-black text-balance text-foreground;
   }
 
   /* Card Styles */

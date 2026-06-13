@@ -20,8 +20,8 @@ const industries: IndustryCard[] = [
     name: 'Manufacturing',
     icon: <Factory className="w-8 h-8" />,
     description: 'Reduce operational costs with our industrial-grade renewable energy systems and process optimization.',
-    benefits: ['50-60% cost reduction', 'Zero downtime installation', 'AI-powered predictive maintenance'],
-    color: 'from-blue-500 to-cyan-500',
+    benefits: ['50-60% cost reduction', 'Zero downtime installation', 'Scheduled preventive maintenance'],
+    color: 'brand',
     image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&q=80'
   },
   {
@@ -30,7 +30,7 @@ const industries: IndustryCard[] = [
     icon: <Building2 className="w-8 h-8" />,
     description: 'Power your office buildings and retail spaces with our scalable solar and grid solutions.',
     benefits: ['35-45% energy savings', 'Tax credits up to ₹30 Lakhs', 'Real-time monitoring dashboard'],
-    color: 'from-purple-500 to-pink-500',
+    color: 'brand',
     image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80'
   },
   {
@@ -39,7 +39,7 @@ const industries: IndustryCard[] = [
     icon: <Home className="w-8 h-8" />,
     description: 'Transform your home with residential solar, heat pump HVAC, and smart energy management.',
     benefits: ['₹5-10 Lakh annual savings', 'Government subsidies up to 40%', 'Net metering enabled'],
-    color: 'from-green-500 to-emerald-500',
+    color: 'brand',
     image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80'
   },
   {
@@ -48,7 +48,7 @@ const industries: IndustryCard[] = [
     icon: <Zap className="w-8 h-8" />,
     description: 'Reduce utility costs for hotels, resorts, and restaurants while improving guest experience.',
     benefits: ['40% operating cost cut', 'Enhanced sustainability branding', '24/7 energy management'],
-    color: 'from-orange-500 to-red-500',
+    color: 'brand',
     image: 'https://images.unsplash.com/photo-1631049307038-da31f93f3833?w=600&q=80'
   },
   {
@@ -57,7 +57,7 @@ const industries: IndustryCard[] = [
     icon: <Leaf className="w-8 h-8" />,
     description: 'Empower farms with solar water pumping, irrigation automation, and smart resource management.',
     benefits: ['Zero electricity costs', 'Government grants available', 'Crop productivity increase'],
-    color: 'from-lime-500 to-green-600',
+    color: 'brand',
     image: 'https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600&q=80'
   },
   {
@@ -66,7 +66,7 @@ const industries: IndustryCard[] = [
     icon: <TrendingUp className="w-8 h-8" />,
     description: 'Equip schools and universities with renewable energy while teaching sustainability.',
     benefits: ['Educational opportunities', 'CSR benefits realization', 'Long-term cost savings'],
-    color: 'from-indigo-500 to-blue-600',
+    color: 'brand',
     image: 'https://images.unsplash.com/photo-1427504494785-cdaf3e827c9f?w=600&q=80'
   }
 ];
@@ -75,7 +75,7 @@ export const IndustriesShowcase: React.FC = () => {
   return (
     <section id="industries" className="section-container">
       <div className="text-center mb-16">
-        <h2 className="text-5xl font-black mb-4 text-balance text-foreground">
+        <h2 className="section-heading mb-4">
           Solutions for Every <span className="text-gradient-emerald">Industry</span>
         </h2>
         <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -100,7 +100,7 @@ export const IndustriesShowcase: React.FC = () => {
               <div className={`absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent`} />
               
               {/* Icon Badge */}
-              <div className="absolute top-4 right-4 w-12 h-12 bg-white/20 backdrop-blur-lg rounded-xl flex items-center justify-center text-primary border border-white/30">
+              <div className="absolute top-4 right-4 w-12 h-12 bg-card/80 backdrop-blur-lg rounded-xl flex items-center justify-center text-primary border border-border">
                 {industry.icon}
               </div>
             </div>

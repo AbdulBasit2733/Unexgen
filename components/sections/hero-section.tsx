@@ -6,7 +6,7 @@ import Image from 'next/image';
 // KPI Counter Component
 const KPICounter: React.FC<{ value: string; label: string }> = ({ value, label }) => (
   <div className="text-center">
-    <div className="text-4xl md:text-5xl font-black text-primary mb-2">{value}</div>
+    <div className="text-3xl sm:text-4xl md:text-5xl font-black text-primary mb-2">{value}</div>
     <div className="text-sm md:text-base text-muted-foreground font-medium">{label}</div>
   </div>
 );
@@ -22,7 +22,7 @@ export const HeroSection: React.FC = () => {
           {/* Left Content */}
           <div>
             {/* Urgency Badge */}
-            <div className="flex items-center gap-3 glass-light px-6 py-3 rounded-full inline-flex mb-8 animate-float">
+            <div className="inline-flex items-center gap-3 glass-light px-4 sm:px-6 py-3 rounded-full mb-8 animate-float">
               <div className="w-2 h-2 bg-primary rounded-full animate-pulse-emerald" />
               <span className="text-sm font-semibold text-foreground">
                 ₹10+ Crore in Government Incentives
@@ -30,7 +30,7 @@ export const HeroSection: React.FC = () => {
             </div>
 
             {/* Hero Headline */}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-6 text-balance text-foreground">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight mb-6 text-balance text-foreground">
               Power Your Future with{' '}
               <span className="text-gradient-emerald">Sustainable</span>
               {' '}Energy
@@ -44,7 +44,7 @@ export const HeroSection: React.FC = () => {
 
             {/* Description */}
             <p className="text-lg md:text-xl text-muted-foreground mb-12 leading-relaxed max-w-lg">
-              Industrial-grade decarbonization infrastructure. Net-zero operations powered by AI-driven microgrids and green hydrogen technology.
+              Industrial-grade decarbonization infrastructure with reliable microgrids and green hydrogen technology.
             </p>
 
             {/* CTA Buttons */}
@@ -58,7 +58,7 @@ export const HeroSection: React.FC = () => {
             </div>
 
             {/* KPI Stats */}
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 min-[420px]:grid-cols-3 gap-5 sm:gap-6">
               <KPICounter value="500+" label="Active Projects" />
               <KPICounter value="99.7%" label="System Uptime" />
               <KPICounter value="₹2.4Cr" label="Avg Savings" />
@@ -82,19 +82,19 @@ export const HeroSection: React.FC = () => {
             </div>
 
             {/* Floating Stats Card */}
-            <div className="absolute -bottom-8 -left-8 p-8 rounded-2xl shadow-2xl border border-border max-w-xs" style={{ backgroundColor: '#000000' }}>
-              <h3 className="font-bold text-white mb-4">Real-time Performance</h3>
+            <div className="absolute -bottom-8 -left-8 p-8 rounded-2xl shadow-2xl border border-border max-w-xs bg-card">
+              <h3 className="font-bold text-foreground mb-4">Real-time Performance</h3>
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-400">Energy Generated </span>
+                  <span className="text-muted-foreground">Energy Generated </span>
                   <span className="font-bold text-primary">2,450 kWh</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-400">Carbon Saved</span>
+                  <span className="text-muted-foreground">Carbon Saved</span>
                   <span className="font-bold text-primary">1.2 Tons</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-400">System Health</span>
+                  <span className="text-muted-foreground">System Health</span>
                   <span className="font-bold text-primary">98.5%</span>
                 </div>
               </div>

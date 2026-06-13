@@ -26,7 +26,6 @@ export const Carousel: React.FC<CarouselProps> = ({
     dragFree: false,
     align: 'start',
   });
-  const [canScroll, setCanScroll] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
 
@@ -48,10 +47,17 @@ export const Carousel: React.FC<CarouselProps> = ({
 
   useEffect(() => {
     if (!emblaApi) return;
-    onSelect();
-    setScrollSnaps(emblaApi.scrollSnapList());
+    queueMicrotask(() => {
+      setScrollSnaps(emblaApi.scrollSnapList());
+      onSelect();
+    });
     emblaApi.on('select', onSelect);
     emblaApi.on('reInit', onSelect);
+
+    return () => {
+      emblaApi.off('select', onSelect);
+      emblaApi.off('reInit', onSelect);
+    };
   }, [emblaApi, onSelect]);
 
   useEffect(() => {

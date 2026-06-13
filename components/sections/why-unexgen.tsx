@@ -25,14 +25,14 @@ const valuePropositions: ValueProp[] = [
   },
   {
     id: 'technology',
-    title: 'Advanced AI Technology',
-    description: 'Proprietary algorithms for optimization and predictive maintenance',
+    title: 'Advanced Energy Technology',
+    description: 'Proven controls for optimization and preventive maintenance',
     icon: <Lightbulb className="w-8 h-8" />,
     details: [
       'Real-time energy optimization',
-      'Predictive maintenance systems',
+      'Preventive maintenance systems',
       'IoT-enabled monitoring',
-      'ML-powered demand forecasting'
+      'Demand forecasting'
     ]
   },
   {
@@ -113,7 +113,7 @@ export const WhyUnexgen: React.FC = () => {
   return (
     <section id="why-unexgen-full" className="section-container">
       <div className="text-center mb-16">
-        <h2 className="text-5xl font-black mb-4 text-balance text-foreground">
+        <h2 className="section-heading mb-4">
           Why Choose <span className="text-gradient-emerald">Unexgen</span>
         </h2>
         <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -161,7 +161,7 @@ export const WhyUnexgen: React.FC = () => {
                 'No long-term support',
                 'Limited warranty (5-7 years)',
                 'High maintenance costs',
-                'No AI optimization',
+                'No performance optimization',
                 'Generic designs'
               ]
             },
@@ -171,7 +171,7 @@ export const WhyUnexgen: React.FC = () => {
                 '24/7 lifetime support',
                 '10-year performance warranty',
                 'Free annual maintenance',
-                'AI-powered optimization',
+                'Performance optimization',
                 'Customized solutions'
               ],
               isHighlight: true
@@ -223,16 +223,16 @@ export const WhyUnexgen: React.FC = () => {
       {/* Testimonial Stats */}
       <div className="mt-20 grid grid-cols-1 md:grid-cols-4 gap-8">
         {[
-          { value: '500+', label: 'Active Projects', color: 'from-blue-500 to-cyan-500' },
-          { value: '98%', label: 'Client Satisfaction', color: 'from-green-500 to-emerald-500' },
-          { value: '₹500Cr', label: 'Savings Generated', color: 'from-purple-500 to-pink-500' },
-          { value: '₹100Cr', label: 'Subsidies Unlocked', color: 'from-orange-500 to-red-500' }
+          { value: '500+', label: 'Active Projects' },
+          { value: '98%', label: 'Client Satisfaction' },
+          { value: '₹500Cr', label: 'Savings Generated' },
+          { value: '₹100Cr', label: 'Subsidies Unlocked' }
         ].map((item, idx) => (
           <div key={idx} className="card-elevated p-8 text-center">
             <AnimatedCounter
               value={item.value}
               duration={2000}
-              className={`text-5xl font-black bg-gradient-to-r ${item.color} bg-clip-text text-transparent mb-3 block`}
+              className="text-4xl sm:text-5xl font-black text-primary mb-3 block"
             />
             <p className="text-muted-foreground font-semibold">{item.label}</p>
           </div>

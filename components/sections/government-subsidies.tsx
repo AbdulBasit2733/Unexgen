@@ -170,7 +170,7 @@ export const GovernmentSubsidies: React.FC = () => {
   return (
     <section className="section-container">
       <div className="text-center mb-16">
-        <h2 className="text-5xl font-black mb-4 text-balance text-foreground">
+        <h2 className="section-heading mb-4">
           Government <span className="text-gradient-emerald">Subsidies & Incentives</span>
         </h2>
         <p className="text-muted-foreground text-lg max-w-2xl mx-auto">

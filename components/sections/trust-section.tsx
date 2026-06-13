@@ -39,7 +39,7 @@ export const TrustSection: React.FC = () => {
           {/* Floating Badge */}
           <div className="absolute -bottom-8 -right-8 glass-light p-8 rounded-2xl shadow-xl border border-border">
             <div className="text-center">
-              <div className="text-5xl font-black text-primary mb-2">15+</div>
+              <div className="text-4xl sm:text-5xl font-black text-primary mb-2">15+</div>
               <div className="text-foreground font-bold">Years Experience</div>
             </div>
           </div>
@@ -47,7 +47,7 @@ export const TrustSection: React.FC = () => {
 
         {/* Right - Content */}
         <div>
-          <h2 className="text-5xl font-black mb-6 text-foreground">
+          <h2 className="section-heading mb-6">
             Trusted by <span className="text-gradient-emerald">500+ Facilities</span>
           </h2>
           <p className="text-lg text-muted-foreground mb-8 leading-relaxed">

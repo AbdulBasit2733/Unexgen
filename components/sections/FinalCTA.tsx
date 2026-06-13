@@ -6,32 +6,30 @@ export const FinalCTA: React.FC = () => {
   return (
     <section className="section-container">
       <div 
-        className="rounded-3xl p-16 md:p-20 text-center relative overflow-hidden bg-gradient-to-br from-primary via-primary/80 to-primary/60"
+        className="rounded-3xl p-8 sm:p-12 md:p-16 text-center relative overflow-hidden bg-card border border-border"
       >
-        {/* Decorative Elements */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
 
         <div className="relative z-10">
           <div className="flex justify-center mb-6">
-            <Zap className="w-16 h-16 text-primary-foreground" />
+            <Zap className="w-14 h-14 sm:w-16 sm:h-16 text-primary" />
           </div>
           
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-primary-foreground mb-6 text-balance">
+          <h2 className="text-3xl sm:text-4xl lg:text-6xl font-black text-foreground mb-6 text-balance">
             Transform Your Energy Future
           </h2>
-          <p className="text-xl md:text-2xl text-primary-foreground/90 mb-12 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
             Join over 500 facilities across India achieving net-zero emissions and ₹2-3 Crore in annual savings with Unexgen.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
             <Button 
-              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 text-lg px-12 py-4 font-bold"
+              className="text-lg px-8 sm:px-12 py-4 font-bold justify-center"
             >
               Get Free Energy Audit
             </Button>
             <Button 
-              className="bg-transparent text-primary-foreground border-2 border-primary-foreground hover:bg-primary-foreground/10 text-lg px-12 py-4 font-bold"
+              variant="secondary"
+              className="text-lg px-8 sm:px-12 py-4 font-bold justify-center"
             >
               Explore Partnerships
             </Button>
@@ -44,7 +42,7 @@ export const FinalCTA: React.FC = () => {
               '₹10+ Cr Incentives Unlocked',
               'Net Zero Operations'
             ].map((badge, idx) => (
-              <div key={idx} className="flex items-center gap-2 bg-white/15 backdrop-blur-sm px-6 py-3 rounded-full text-primary-foreground font-semibold border border-white/20">
+              <div key={idx} className="flex items-center gap-2 bg-secondary px-4 sm:px-6 py-3 rounded-full text-foreground font-semibold border border-border">
                 <CheckCircle className="w-5 h-5" />
                 {badge}
               </div>

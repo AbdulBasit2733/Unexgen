@@ -87,7 +87,7 @@ export const ContactSection: React.FC = () => {
   return (
     <section id="contact" className="section-container">
       <div className="text-center mb-16">
-        <h2 className="text-5xl font-black mb-4 text-balance text-foreground">
+        <h2 className="section-heading mb-4">
           Get in <span className="text-gradient-emerald">Touch</span>
         </h2>
         <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -108,7 +108,7 @@ export const ContactSection: React.FC = () => {
                 rel="noopener noreferrer"
                 className="card-elevated p-6 hover:shadow-lg transition-all duration-300 group cursor-pointer block"
               >
-                <div className="flex items-start gap-4">
+                <div className="flex flex-col sm:flex-row sm:items-start gap-4">
                   <div className="text-primary mt-1 group-hover:scale-110 transition-transform">
                     {method.icon}
                   </div>
@@ -117,7 +117,7 @@ export const ContactSection: React.FC = () => {
                     <p className="text-sm text-muted-foreground mb-2">{method.description}</p>
                     <p className="text-primary font-semibold text-sm">{method.contact}</p>
                   </div>
-                  <div className="text-xs font-bold text-primary whitespace-nowrap ml-4">
+                  <div className="text-xs font-bold text-primary sm:whitespace-nowrap sm:ml-4">
                     {method.action}
                   </div>
                 </div>
@@ -126,21 +126,21 @@ export const ContactSection: React.FC = () => {
           </div>
 
           {/* Business Hours */}
-          <div className="card-elevated p-6 bg-secondary border border-border">
+          <div className="card-elevated p-5 sm:p-6 bg-secondary border border-border">
             <div className="flex items-start gap-3 mb-4">
               <Clock className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
               <div>
                 <h3 className="font-bold text-foreground mb-3">Business Hours</h3>
                 <div className="space-y-2 text-sm text-muted-foreground">
-                  <div className="flex justify-between">
+                  <div className="flex flex-col sm:flex-row sm:justify-between gap-1">
                     <span>Monday - Friday</span>
                     <span className="font-semibold text-foreground">9:00 AM - 8:00 PM</span>
                   </div>
-                  <div className="flex justify-between">
+                  <div className="flex flex-col sm:flex-row sm:justify-between gap-1">
                     <span>Saturday</span>
                     <span className="font-semibold text-foreground">10:00 AM - 6:00 PM</span>
                   </div>
-                  <div className="flex justify-between">
+                  <div className="flex flex-col sm:flex-row sm:justify-between gap-1">
                     <span>Sunday & Holidays</span>
                     <span className="font-semibold text-foreground">Emergency Support Only</span>
                   </div>
@@ -154,7 +154,7 @@ export const ContactSection: React.FC = () => {
         </div>
 
         {/* Contact Form */}
-        <div className="card-elevated p-8">
+        <div className="card-elevated p-5 sm:p-8">
           <h3 className="text-2xl font-bold text-foreground mb-6">Send us a Message</h3>
 
           {submitted ? (

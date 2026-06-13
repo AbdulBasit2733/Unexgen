@@ -73,11 +73,11 @@ export const services: Service[] = [
   {
     id: "commercial-hvac",
     title: "Commercial HVAC",
-    description: "Smart building climate systems with AI-driven efficiency",
+    description: "Efficient building climate systems with monitored performance",
     lifetimeSavings: "$180K over 10 years",
     features: [
       "SEER 26+ efficiency",
-      "Predictive maintenance",
+      "Preventive maintenance",
       "IoT sensor integration",
       "Load balancing automation",
     ],
@@ -161,7 +161,7 @@ export const comparisonData: ComparisonData[] = [
   {
     feature: "Response Time",
     traditional: "24-72 hours",
-    unexgen: "Real-time (AI)",
+    unexgen: "Real-time monitoring",
   },
   {
     feature: "Efficiency Loss",

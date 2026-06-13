@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Database, Network, Brain, Zap, Shield, BarChart3, Cloud, Cpu } from 'lucide-react';
+import { Database, Network, Gauge, Zap, Shield, BarChart3, Cloud, Cpu } from 'lucide-react';
 
 interface TechComponent {
   id: string;
@@ -13,10 +13,10 @@ interface TechComponent {
 
 const techStack: TechComponent[] = [
   {
-    id: 'ai-core',
-    name: 'AI Energy Core',
-    description: 'Machine learning algorithms for predictive maintenance and optimization',
-    icon: <Brain className="w-8 h-8" />,
+    id: 'control-core',
+    name: 'Energy Control Core',
+    description: 'Rules-based controls for maintenance planning and system optimization',
+    icon: <Gauge className="w-8 h-8" />,
     position: 'center'
   },
   {
@@ -36,7 +36,7 @@ const techStack: TechComponent[] = [
   {
     id: 'grid-management',
     name: 'Microgrid Manager',
-    description: 'Intelligent load balancing and power distribution',
+    description: 'Coordinated load balancing and power distribution',
     icon: <Network className="w-8 h-8" />,
     position: 'right'
   },
@@ -64,7 +64,7 @@ const techStack: TechComponent[] = [
   {
     id: 'database',
     name: 'Data Lake',
-    description: 'Historical data and AI model training',
+    description: 'Historical performance data and reporting records',
     icon: <Database className="w-8 h-8" />,
     position: 'bottom'
   }
@@ -94,13 +94,13 @@ export const TechnologyEcosystem: React.FC = () => {
   const rightComponents = techStack.filter(t => t.position === 'right');
 
   return (
-    <section className="section-container bg-secondary">
+    <section id="technology" className="section-container bg-secondary">
       <div className="text-center mb-16">
-        <h2 className="text-5xl font-black mb-4 text-balance text-foreground">
+        <h2 className="section-heading mb-4">
           Unexgen Technology <span className="text-gradient-emerald">Ecosystem</span>
         </h2>
         <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-          An integrated platform combining AI, IoT, cloud computing, and renewable energy management into one intelligent system
+          An integrated platform combining sensors, cloud infrastructure, and renewable energy management into one reliable system
         </p>
       </div>
 
@@ -149,8 +149,8 @@ export const TechnologyEcosystem: React.FC = () => {
       <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
         {[
           {
-            title: 'Real-Time Intelligence',
-            description: 'Continuous monitoring with AI-powered insights for proactive system optimization'
+            title: 'Real-Time Visibility',
+            description: 'Continuous monitoring with actionable insights for proactive system optimization'
           },
           {
             title: 'Seamless Integration',

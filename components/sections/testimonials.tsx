@@ -7,8 +7,8 @@ import { Carousel } from '@/components/ui/carousel';
 import { Quote } from 'lucide-react';
 
 const TestimonialCard: React.FC<{ testimonial: typeof testimonials[0] }> = ({ testimonial }) => (
-  <div className="px-6 h-full">
-    <div className="card-elevated p-8 h-full flex flex-col">
+  <div className="px-2 sm:px-6 h-full">
+    <div className="card-elevated p-5 sm:p-8 h-full flex flex-col">
       {/* Quote Icon */}
       <Quote className="w-8 h-8 text-primary mb-4 opacity-30" />
 
@@ -38,7 +38,7 @@ export const Testimonials: React.FC = () => {
   return (
     <section id="testimonials" className="section-container">
       <div className="mb-12 text-center">
-        <h2 className="text-5xl font-black mb-4 text-balance">
+        <h2 className="section-heading mb-4">
           Client <span className="text-gradient-emerald">Success Stories</span>
         </h2>
         <p className="text-muted-foreground text-lg max-w-2xl mx-auto">

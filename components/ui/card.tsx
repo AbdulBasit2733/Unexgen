@@ -11,8 +11,8 @@ export const Card: React.FC<CardProps> = ({ children, className, featured }) => 
   return (
     <div 
       className={cn(
-        'card-glass',
-        featured && 'bg-electric-emerald text-white border-electric-emerald',
+        'card-elevated',
+        featured && 'bg-primary/10 border-primary text-foreground',
         className
       )}
     >
