@@ -21,47 +21,41 @@ export const HeroSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div>
-            {/* Urgency Badge */}
+            {/* Hero Badge */}
             <div className="inline-flex items-center gap-3 glass-light px-4 sm:px-6 py-3 rounded-full mb-8 animate-float">
               <div className="w-2 h-2 bg-primary rounded-full animate-pulse-emerald" />
               <span className="text-sm font-semibold text-foreground">
-                ₹10+ Crore in Government Incentives
+                Company Profile & Investor Presentation
               </span>
             </div>
 
             {/* Hero Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight mb-6 text-balance text-foreground">
-              Power Your Future with{' '}
-              <span className="text-gradient-emerald">Sustainable</span>
-              {' '}Energy
+              Powering <span className="text-gradient-emerald">Sustainability</span>.
+              <br /> Delivering <span className="text-gradient-emerald">Innovation</span>.
+              <br /> Creating <span className="text-gradient-emerald">Value</span>.
             </h1>
 
-            {/* Subheading */}
-            <h2 className="text-xl md:text-2xl font-bold text-muted-foreground mb-8">
-              <span className="text-primary">Hydrogen</span> • <span className="text-primary">Solar</span> • 
-              <span className="text-primary"> EV Infrastructure</span>
-            </h2>
-
             {/* Description */}
-            <p className="text-lg md:text-xl text-muted-foreground mb-12 leading-relaxed max-w-lg">
-              Industrial-grade decarbonization infrastructure with reliable microgrids and green hydrogen technology.
+            <p className="text-lg md:text-xl text-muted-foreground mb-12 leading-relaxed max-w-2xl">
+              Unexgen Technology Private Limited delivers green cold storage, solar refrigeration, HVAC solutions, and industrial energy storage to unlock higher profits and lower operating costs.
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
               <Button variant="primary" icon={<LightningIcon />} className="text-lg px-8 py-4">
-                Start Energy Audit
+                Download Profile
               </Button>
               <Button variant="secondary" className="text-lg px-8 py-4">
-                View Case Studies
+                Explore Services
               </Button>
             </div>
 
             {/* KPI Stats */}
             <div className="grid grid-cols-1 min-[420px]:grid-cols-3 gap-5 sm:gap-6">
               <KPICounter value="500+" label="Active Projects" />
-              <KPICounter value="99.7%" label="System Uptime" />
-              <KPICounter value="₹2.4Cr" label="Avg Savings" />
+              <KPICounter value="24/7" label="Continuous Support" />
+              <KPICounter value="₹10+ Cr" label="Subsidies Unlocked" />
             </div>
           </div>
 

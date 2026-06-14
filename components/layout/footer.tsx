@@ -63,7 +63,7 @@ export const Footer: React.FC = () => {
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li>
                 <a
-                  href="#"
+                  href="#overview"
                   className="hover:text-primary transition-colors"
                 >
                   About Us
@@ -79,18 +79,18 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#contact"
                   className="hover:text-primary transition-colors"
                 >
-                  Careers
+                  Contact
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#mission"
                   className="hover:text-primary transition-colors"
                 >
-                  Contact
+                  Mission
                 </a>
               </li>
             </ul>
@@ -113,24 +113,15 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-muted-foreground text-sm">
-            © 2026 Unexgen Technology. All rights reserved.
-          </p>
-          <div className="flex gap-6 text-sm text-muted-foreground">
-            <a
-              href="#"
-              className="hover:text-primary transition-colors"
-            >
-              Privacy Policy
-            </a>
-            <a
-              href="#"
-              className="hover:text-primary transition-colors"
-            >
-              Terms of Service
-            </a>
+        <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-start gap-4">
+          <div className="space-y-2 text-sm text-muted-foreground">
+            <p>Central Naka Road, Near VIP Function Hall, Bari Colony, Jaswantpura, Chhatrapati Sambhajinagar, Maharashtra - 431001</p>
+            <p>GSTIN: 27AAECU9854G1ZV • PAN: AADCU9854G</p>
+            <p>+91 7972745051 • +91 8275582562 • office.unexgentechnology@gmail.com</p>
           </div>
+          <p className="text-muted-foreground text-sm">
+            © 2026 Unexgen Technology Private Limited. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

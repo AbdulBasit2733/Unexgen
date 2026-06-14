@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Mail, MessageCircle, Phone, MapPin, Clock } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 
 interface ContactMethod {
   id: string;
@@ -15,50 +15,48 @@ interface ContactMethod {
 
 const contactMethods: ContactMethod[] = [
   {
-    id: 'whatsapp',
-    title: 'WhatsApp Chat',
-    description: 'Quick responses & instant support',
-    icon: <MessageCircle className="w-8 h-8" />,
-    contact: '+91-9876543210',
-    action: 'Send WhatsApp',
-    link: 'https://wa.me/919876543210?text=Hi%20Unexgen%2C%20I%20need%20an%20energy%20audit'
+    id: 'phone',
+    title: 'Talk to Us',
+    description: 'Immediate support and project inquiries',
+    icon: <Phone className="w-8 h-8" />,
+    contact: '+91 7972745051',
+    action: 'Call Now',
+    link: 'tel:+917972745051'
+  },
+  {
+    id: 'phone2',
+    title: 'Alternate Number',
+    description: 'Additional support line',
+    icon: <Phone className="w-8 h-8" />,
+    contact: '+91 8275582562',
+    action: 'Call Now',
+    link: 'tel:+918275582562'
   },
   {
     id: 'email',
-    title: 'Email Support',
-    description: 'Detailed queries & documentation',
+    title: 'Email Us',
+    description: 'Send detailed project requirements',
     icon: <Mail className="w-8 h-8" />,
-    contact: 'info@unexgen.com',
+    contact: 'office.unexgentechnology@gmail.com',
     action: 'Send Email',
-    link: 'mailto:info@unexgen.com?subject=Energy%20Audit%20Request'
-  },
-  {
-    id: 'phone',
-    title: 'Call Us',
-    description: 'Direct phone support available',
-    icon: <Phone className="w-8 h-8" />,
-    contact: '1800-UNEXGEN (1800-863-9436)',
-    action: 'Call Now',
-    link: 'tel:+911800863943'
+    link: 'mailto:office.unexgentechnology@gmail.com'
   },
   {
     id: 'office',
-    title: 'Visit Office',
-    description: 'Meet our team in person',
+    title: 'Office Address',
+    description: 'Central Naka Road, Near VIP Function Hall, Bari Colony, Jaswantpura, Chhatrapati Sambhajinagar, Maharashtra - 431001',
     icon: <MapPin className="w-8 h-8" />,
-    contact: 'Bangalore, Mumbai, Delhi, Pune',
-    action: 'Get Directions',
-    link: 'https://maps.google.com/?q=Unexgen+Technology'
+    contact: 'GSTIN: 27AAECU9854G1ZV • PAN: AADCU9854G',
+    action: 'View Location',
+    link: 'https://maps.google.com/?q=Central+Naka+Road+Jaswantpura'
   }
 ];
 
-const serviceTypes = [
-  { id: 'residential', label: 'Residential Solar', icon: '🏠' },
-  { id: 'commercial', label: 'Commercial Solutions', icon: '🏢' },
-  { id: 'industrial', label: 'Industrial Systems', icon: '🏭' },
-  { id: 'hydrogen', label: 'Green Hydrogen', icon: '⚡' },
-  { id: 'ev', label: 'EV Charging', icon: '🔋' },
-  { id: 'audit', label: 'Energy Audit', icon: '📊' }
+const futureRoadmap = [
+  'Mega Solar Cold Chain Networks',
+  'Smart Cold Storage Hubs',
+  'Industrial Energy Storage Systems',
+  'Renewable Energy Integration Projects',
 ];
 
 export const ContactSection: React.FC = () => {
@@ -212,7 +210,7 @@ export const ContactSection: React.FC = () => {
               </div>
 
               {/* Service Type */}
-              <div>
+              {/* <div>
                 <label className="block text-sm font-semibold text-foreground mb-2">Service Interested In</label>
                 <select
                   name="service"
@@ -228,7 +226,7 @@ export const ContactSection: React.FC = () => {
                     </option>
                   ))}
                 </select>
-              </div>
+              </div> */}
 
               {/* Message */}
               <div>
@@ -260,21 +258,29 @@ export const ContactSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Service Types Grid */}
-      <div className="mt-20">
-        <h3 className="text-2xl font-bold text-foreground mb-8 text-center">Services We Offer</h3>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {serviceTypes.map((service) => (
-            <button
-              key={service.id}
-              className="card-elevated p-6 text-center hover:shadow-lg transition-all hover:scale-105 group"
-            >
-              <div className="text-4xl mb-3">{service.icon}</div>
-              <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
-                {service.label}
-              </p>
-            </button>
-          ))}
+      <div className="mt-20 grid gap-6 lg:grid-cols-[1fr_0.8fr]">
+        <div className="card-elevated p-8 border border-border bg-card">
+          <h3 className="text-2xl font-bold text-foreground mb-6">Future Roadmap</h3>
+          <ul className="space-y-4">
+            {futureRoadmap.map((item) => (
+              <li key={item} className="flex items-start gap-3">
+                <span className="mt-1 h-2 w-2 rounded-full bg-primary flex-shrink-0" />
+                <span className="text-foreground">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="card-elevated p-8 border border-border bg-secondary">
+          <h3 className="text-2xl font-bold text-foreground mb-6">Ready to Get Started?</h3>
+          <p className="text-muted-foreground mb-6">
+            Contact our team for a free consultation and discover how Unexgen can transform your cooling and energy infrastructure.
+          </p>
+          <a
+            href="mailto:office.unexgentechnology@gmail.com"
+            className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-4 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
+          >
+            Email Us Today
+          </a>
         </div>
       </div>
     </section>

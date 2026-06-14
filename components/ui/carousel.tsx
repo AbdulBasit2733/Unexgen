@@ -11,6 +11,7 @@ interface CarouselProps {
   showControls?: boolean;
   showDots?: boolean;
   className?: string;
+  slideWidth?: string | number;
 }
 
 export const Carousel: React.FC<CarouselProps> = ({
@@ -20,6 +21,7 @@ export const Carousel: React.FC<CarouselProps> = ({
   showControls = true,
   showDots = true,
   className = '',
+  slideWidth = '100%',
 }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
@@ -75,7 +77,10 @@ export const Carousel: React.FC<CarouselProps> = ({
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
           {React.Children.map(children, (child) => (
-            <div className="flex-[0_0_100%] min-w-0">
+            <div
+              className="flex-[0_0_auto] min-w-0"
+              style={{ minWidth: typeof slideWidth === 'number' ? `${slideWidth}px` : slideWidth, maxWidth: typeof slideWidth === 'number' ? `${slideWidth}px` : slideWidth }}
+            >
               {child}
             </div>
           ))}

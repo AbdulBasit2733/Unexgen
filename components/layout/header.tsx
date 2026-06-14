@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
 import { Menu, Moon, Sun, X } from 'lucide-react';
 
 const getInitialTheme = (): 'light' | 'dark' => {
@@ -33,10 +32,11 @@ export const Header: React.FC = () => {
   }, [theme]);
 
   const navItems = [
+    { label: 'Overview', target: 'overview' },
     { label: 'Solutions', target: 'solutions' },
+    { label: 'Industries', target: 'industries' },
     { label: 'Portfolio', target: 'portfolio' },
-    { label: 'Technology', target: 'technology' },
-    { label: 'Why Unexgen', target: 'why-unexgen' },
+    { label: 'Contact', target: 'contact' },
   ];
 
   const handleNavClick = (target: string) => {
@@ -77,7 +77,7 @@ export const Header: React.FC = () => {
             <button
               key={item.target}
               onClick={() => handleNavClick(item.target)}
-              className={`text-sm font-semibold uppercase tracking-wide transition-colors duration-300 pb-1 border-b-2 ${
+              className={`text-sm cursor-pointer font-semibold uppercase tracking-wide transition-colors duration-300 pb-1 border-b-2 ${
                 activeSection === item.target
                   ? 'text-primary border-b-primary'
                   : 'text-muted-foreground border-b-transparent hover:text-foreground'
@@ -97,14 +97,14 @@ export const Header: React.FC = () => {
           <button
             type="button"
             onClick={toggleTheme}
-            className="h-10 w-10 rounded-lg border border-border bg-card text-foreground flex items-center justify-center transition-colors hover:text-primary"
+            className="h-10 w-10 cursor-pointer rounded-lg border border-border bg-card text-foreground flex items-center justify-center transition-colors hover:text-primary"
             aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
           >
             {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
           </button>
-          <Button variant="primary" className="hidden sm:flex text-sm md:text-base px-5 py-2 md:py-3">
+          {/* <Button variant="primary" className="hidden sm:flex text-sm md:text-base px-5 py-2 md:py-3">
             Get Audit
-          </Button>
+          </Button> */}
           <button
             type="button"
             onClick={() => setMobileOpen((open) => !open)}
@@ -123,14 +123,14 @@ export const Header: React.FC = () => {
               <button
                 key={item.target}
                 onClick={() => handleNavClick(item.target)}
-                className="rounded-lg px-3 py-3 text-left text-sm font-semibold uppercase tracking-wide text-foreground hover:bg-secondary"
+                className="rounded-lg cursor-pointer px-3 py-3 text-left text-sm font-semibold uppercase tracking-wide text-foreground hover:bg-secondary"
               >
                 {item.label}
               </button>
             ))}
-            <Button variant="primary" className="mt-2 justify-center text-sm">
+            {/* <Button variant="primary" className="mt-2 justify-center text-sm hidden">
               Get Audit
-            </Button>
+            </Button> */}
           </nav>
         </div>
       )}

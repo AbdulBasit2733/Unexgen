@@ -284,7 +284,7 @@ export const PortfolioShowcase: React.FC = () => {
         </p>
       </div>
 
-      <Carousel autoplay autoplayDelay={6000} showDots>
+      <Carousel autoplay autoplayDelay={6000} showDots slideWidth="min(90vw, 300px) max(90vw, 800px)">
         {projects.map((project) => (
           <PortfolioCard key={project.id} project={project} onViewDetails={setSelectedProject} />
         ))}
