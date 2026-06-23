@@ -61,8 +61,30 @@ const services = [
 ]
 
 export function ServicesSection() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: services.map((service, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'Service',
+        name: service.title,
+        description: service.items.join(', '),
+        provider: {
+          '@type': 'Organization',
+          name: 'Unexgen Technology Pvt. Ltd.'
+        }
+      }
+    }))
+  }
+
   return (
     <section id="services" className="bg-secondary py-20 md:py-28">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="mx-auto max-w-7xl px-4 md:px-6">
 
         <AnimateIn animation="fade-up" className="mx-auto max-w-3xl text-center">
