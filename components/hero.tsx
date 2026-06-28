@@ -12,10 +12,11 @@ import {
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import Image from "next/image";
 
 const slides = [
   {
-    video: "/videos/14743044_1920_1080_30fps.mp4",
+    image: "/images/solar1.jpg",
     eyebrow: "Green Cooling & Renewable Energy",
     eyebrowIcon: Sun,
     heading: "Sustainability-Driven Smart Cooling & Renewable Energy Solutions",
@@ -28,7 +29,7 @@ const slides = [
     ],
   },
   {
-    video: "/videos/Factory_Industrial_1920x1080.mp4",
+    image: "/images/hvac1.jpg",
     eyebrow: "HVAC Engineering & Industrial Cooling",
     eyebrowIcon: Snowflake,
     heading: "Precision-Engineered HVAC & Industrial Refrigeration Systems",
@@ -41,7 +42,7 @@ const slides = [
     ],
   },
   {
-    video: "/videos/solar.mp4",
+    image: "/images/greencoldstorage3.png",
     eyebrow: "Solar EPC & Thermal Energy Storage",
     eyebrowIcon: Gauge,
     heading: "Integrated Solar EPC & Thermal Storage Cooling Systems",
@@ -55,45 +56,43 @@ const slides = [
   },
 ];
 
-const SLIDE_DURATION = 1000; // ms
+const SLIDE_DURATION = 4000; // 2 seconds auto-advance
 
 export function Hero() {
   const [current, setCurrent] = useState(0);
   const [animating, setAnimating] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+
+  const clearTimer = () => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+  };
+
+  const startTimer = () => {
+    clearTimer();
+    timerRef.current = setTimeout(() => {
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }, SLIDE_DURATION);
+  };
 
   const goTo = (index: number) => {
     if (animating || index === current) return;
     setAnimating(true);
     setCurrent(index);
-    videoRefs.current[index]?.play().catch(() => {});
+    startTimer(); // reset auto-advance on manual nav
     setTimeout(() => setAnimating(false), 900);
   };
 
   const next = () => goTo((current + 1) % slides.length);
   const prev = () => goTo((current - 1 + slides.length) % slides.length);
 
-  // Auto-advance
+  // Auto-advance on mount and after every slide change
   useEffect(() => {
-    timerRef.current = setTimeout(next, SLIDE_DURATION);
-    return () => {
-      if (timerRef.current) clearTimeout(timerRef.current);
-    };
+    startTimer();
+    return clearTimer;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [current]);
-
-  // Play current video on mount / slide change
-  useEffect(() => {
-    videoRefs.current.forEach((v, i) => {
-      if (!v) return;
-      if (i === current) {
-        v.currentTime = 0;
-        v.play().catch(() => {});
-      } else {
-        v.pause();
-      }
-    });
   }, [current]);
 
   return (
@@ -102,35 +101,38 @@ export function Hero() {
       className="relative isolate flex min-h-screen items-center overflow-hidden"
       aria-label="Hero"
     >
-      {/* ── Video Layers ─────────────────────────────────────────────────── */}
+      {/* ── Image Layers ─────────────────────────────────────────────── */}
       {slides.map((slide, i) => (
         <div
           key={i}
           className={cn(
-            "absolute inset-0 transition-opacity duration-[800ms] ease-in-out",
+            "absolute inset-0 transition-opacity duration-[1000ms] ease-in-out",
             i === current ? "opacity-100 z-0" : "opacity-0 z-0",
           )}
           aria-hidden={i !== current}
         >
-          <video
-            ref={(el) => {
-              videoRefs.current[i] = el;
-            }}
-            src={slide.video}
-            autoPlay={true}
-            muted
-            loop
-            playsInline
-            className="h-full w-full object-cover"
+          <Image
+            src={slide.image}
+            alt={slide.eyebrow}
+            fill
+            priority={i === 0}
+            sizes="100vw"
+            className="object-cover object-center"
           />
         </div>
       ))}
 
-      {/* ── Overlays ─────────────────────────────────────────────────────── */}
-      <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/70 via-black/50 to-black/20" />
-      <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+      {/* ── Overlays (top-to-bottom + left-to-right + solid dark top) ── */}
+      {/* Solid black bar at top so navbar area is always dark */}
+      <div className="absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-black/80 to-transparent" />
+      {/* Main left-side darkening for text readability */}
+      <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/75 via-black/55 to-black/25" />
+      {/* Bottom fade */}
+      <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
+      {/* Subtle overall dark tint to ensure no bright blowout on any image */}
+      <div className="absolute inset-0 z-10 bg-black/30" />
 
-      {/* ── Slide Content ─────────────────────────────────────────────────── */}
+      {/* ── Slide Content ─────────────────────────────────────────────── */}
       <div className="relative z-20 mx-auto w-full max-w-7xl px-4 pt-28 pb-24 md:px-8">
         {slides.map((slide, i) => {
           const EyebrowIcon = slide.eyebrowIcon;
@@ -138,7 +140,10 @@ export function Hero() {
             <div
               key={i}
               className={cn(
-                "absolute inset-0 flex items-center px-4 pt-28 pb-24 md:px-8 transition-all duration-700 ease-in-out",
+                "absolute inset-0 flex items-center px-4 md:px-8",
+                // Push content down so it never rides under the navbar
+                "pt-32 pb-24",
+                "transition-all duration-700 ease-in-out",
                 i === current
                   ? "opacity-100 translate-y-0 pointer-events-auto"
                   : "opacity-0 translate-y-4 pointer-events-none",
@@ -164,27 +169,24 @@ export function Hero() {
 
                 {/* CTAs */}
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                  <Button
-                    // asChild
-                    size="lg"
-                    className="bg-primary text-white hover:bg-[#22aa7d] shadow-lg shadow-primary/30 focus-visible:ring-primary/40"
-                  >
-                    <Link
-                      href="#contact"
-                      className="flex w-full h-full items-center gap-2"
+                  <Link href="#contact">
+                    <Button
+                      size="lg"
+                      className="bg-primary text-white hover:bg-[#22aa7d] shadow-lg shadow-primary/30 focus-visible:ring-primary/40 w-full sm:w-auto flex items-center gap-2"
                     >
                       Get Free Consultation
-                      <ArrowRight className="h-20 w-20" />
-                    </Link>
-                  </Button>
-                  <Button
-                    // asChild
-                    size="lg"
-                    variant="outline"
-                    className="border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white hover:border-white/50"
-                  >
-                    <Link href="#contact">Request Project Quote</Link>
-                  </Button>
+                      <ArrowRight className="h-4 w-4" />
+                    </Button>
+                  </Link>
+                  <Link href="#contact">
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white hover:border-white/50 w-full sm:w-auto"
+                    >
+                      Request Project Quote
+                    </Button>
+                  </Link>
                 </div>
 
                 {/* Stats bar */}
@@ -207,7 +209,7 @@ export function Hero() {
         })}
 
         {/* Spacer so the section has the right height */}
-        <div className="invisible max-w-2xl">
+        <div className="invisible max-w-2xl pt-32">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 text-xs">
             &nbsp;
           </span>
@@ -224,7 +226,7 @@ export function Hero() {
         </div>
       </div>
 
-      {/* ── Slide Controls ────────────────────────────────────────────────── */}
+      {/* ── Slide Controls ────────────────────────────────────────────── */}
       <div className="absolute bottom-8 left-1/2 z-30 flex -translate-x-1/2 items-center gap-4">
         {/* Prev */}
         <button
